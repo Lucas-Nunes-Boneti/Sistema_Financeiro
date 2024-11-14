@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contas</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+
+<body>
+    <h1></h1>
+
+    <form action="" method="POST">
+        <p>FORMAS DE PAGAMENTO</p>
+
+        <div class="container">
+            <img src="../fotos/..." alt="">
+        </div>
+
+        <div>
+            <label for="numero">NUMERO DA CONTA:
+                <input type="number" id="numero" name="numero" required></label><br><br>
+        </div>
+        <div>
+
+            <label for="tipo">Tipo de contas:<br>
+               <input type="radio" id="corrente" name="tipo" value="corrente">  Conta Corrente
+               <input type="radio" id="poupança" name="tipo" value="poupança"> Conta poupança
+               <input type="radio" id="credito" name="tipo" value="credito"> Credito
+               <input type="radio" id="salario" name="tipo" value="salario"> Conta Salario
+            </label>
+        </div>
+        <div>
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor" name="valor" value="">
+        </div>
+
+        <button type="submit" class="payment-btn">Pagar</button>
+
+    </form>
+</body>
+
+</html>

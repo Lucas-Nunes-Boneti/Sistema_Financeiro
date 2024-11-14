@@ -117,4 +117,7 @@ body {
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Impede a repetição da imagem */
   }
+  img{
+    max-width: 100px;
+  }
   

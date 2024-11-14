@@ -9,7 +9,7 @@
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../fotos/fundooo.jpg');
+    background-image: url('../fotos/Designer.png');
     margin: 50;
     padding: 90;
     display: flex;
@@ -20,10 +20,15 @@ body {
 
 /* Estilo do formulário */
 form {
+<<<<<<< HEAD
     background-color: #092b00;
     padding: 60px;
+=======
+    background-color: #283125;
+    padding: 20px;
+>>>>>>> ca79be297f07e64da29b879fff0e22c5cc176746
     border-radius: 8px;
-    box-shadow: 0 10px 10px rgba(156, 11, 11, 0.1);
+    box-shadow: 0 10px 20px rgb(15, 156, 2);
     width: 100%;
     max-width: 600px;
       
@@ -32,7 +37,7 @@ form {
 /* Título */
 form p {
     text-align: center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
-    font-size: 80px;
+    font-size: 40px;
     margin-bottom: 60px;
     font-weight: bold;
     color: #ffffff;

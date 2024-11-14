@@ -26,18 +26,16 @@ form {
     box-shadow: 0 10px 10px rgba(156, 11, 11, 0.1);
     width: 100%;
     max-width: 600px;
-    
-       
       
 }
 
 /* Título */
 form p {
-    text-align: center;
+    text-align: center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
     font-size: 80px;
     margin-bottom: 60px;
     font-weight: bold;
-    color: #b88484;
+    color: #ffffff;
 }
 
 /* Estilos de cada campo */

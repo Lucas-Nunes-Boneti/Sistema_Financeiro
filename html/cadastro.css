@@ -3,13 +3,13 @@
     text-align: center;
     font-size: 50px;
     font-weight: bold;
-    color: #eeeeee;
+    color: #ffffff;
 }
 
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #eeeeee;
+    background-image: url('fundooo.C:\xampp\htdocs\projeto-financeiro\fundooo.jpg.jpg');
     margin: 50;
     padding: 90;
     display: flex;
@@ -20,12 +20,15 @@ body {
 
 /* Estilo do formulário */
 form {
-    background-color: #276125;
+    background-color: #092b00;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(156, 11, 11, 0.1);
+    box-shadow: 0 10px 10px rgba(156, 11, 11, 0.1);
     width: 100%;
     max-width: 600px;
+    
+       
+      
 }
 
 /* Título */
@@ -50,30 +53,40 @@ label {
 }
 
 /* Campos de entrada */
-input[type="text"] {
+input[type="text"] , input[type="email"], input[type="password"]{
     width: 100%;
     padding: 10px;
     font-size: 14px;
     border: 0px solid #b8ccb2;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #f9f9f9;
+    background-color: #dfdfdf;
 }
+select {
+    width: 30%;
+    padding: 10px;
+    font-size: 14px;
+    border: 0px solid #b8ccb2;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #dfdfdf;
+}
+
 
 input[type="text"]:focus {
     border-color: #a14114;
-    background-color: #fff;
+    background-color: #55a54e;
     outline: none;
 }
 
 /* Placeholder */
 input::placeholder {
-    color: #ca2a2a;
+    color: #223615;
 }
 
 /* Botão de envio */
 button {
-    background-color: #701a17;
+    background-color: #929020;
     color: #fff;
     padding: 12px 20px;
     border: none;
@@ -85,7 +98,7 @@ button {
 }
 
 button:hover {
-    background-color: #229b3c;
+    background-color: #818b84;
 }
 
 /* Estilo para mensagens de erro ou sucesso */
@@ -100,3 +113,10 @@ button:hover {
     font-size: 12px;
     margin-top: 5px;
 }
+body {
+    background-image: url('../fotos/Designer.png');
+    background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+  }
+  

@@ -1,22 +1,8 @@
 <?php
-if (isset($_FILES['foto_cliente'])) {
-    // Caminho onde a imagem será armazenada no servidor
-    $diretorio_destino = 'uploads/fotos/';
-    $nome_arquivo = basename($_FILES['foto_cliente']['name']);
-    $caminho_arquivo = $diretorio_destino . $nome_arquivo;
-
-    // Move o arquivo para o diretório de destino
-    if (move_uploaded_file($_FILES['foto_cliente']['tmp_name'], $caminho_arquivo)) {
-        // Armazena o caminho no banco de dados
-        $sql = "UPDATE clientes SET foto_cliente = '$caminho_arquivo' WHERE id_cliente = ?";
-        // Execute a consulta (exemplo usando PDO)
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$id_cliente]);
-    }
-}
 
 session_start();
-include("conexao.php");
+include("..\banco_de_dados\conexao.php");
+
 //entrada de dados vindos do HTML
 $cpf = $_POST['cpf'];
 $nome = $_POST['nome'];
@@ -39,36 +25,68 @@ if (
    if ($senha != $confirmarsenha){
       echo " Senhas são diferentes";
    }
- 
-    $resultSqlCliente =
-     " insert into tb_cliente( cpf, nome, celular,
-    datadenascimento, email, cidade, endereco, nrcasa,
-    senha, confirmarsenha)
-    values ('$cpf', '$nome', '$Telefone', '$Tipo_de_Usuario',
-    '$email', '$sexo', '$senha', '$confirmarsenha')";
- 
-    
-   
-    $resultadoCliente = mysqli_query($conexao, $resultSqlCliente);
-   
-    if ( $resultadoCliente){
-        header("location: login.html");
-    } else{
-        $_SESSION['msg'] = "<p> Cliente não Cadastrado</p>";
-     
+  // Verifica se o arquivo foi enviado e se não houve erro
+  if ($_FILES['arquivo_foto']['error'] === UPLOAD_ERR_OK) {
+
+    // Verifica a extensão do arquivo
+    $extensao = strtolower(pathinfo($_FILES['arquivo_foto']['name'], PATHINFO_EXTENSION));
+    $tipos_aceitos = ['jpg', 'jpeg', 'png', 'gif'];
+    if (!in_array($extensao, $tipos_aceitos)) {
+        $_SESSION['msg'] = "<p>Formato de imagem inválido. Apenas JPG, JPEG, PNG e GIF são permitidos.</p>";
+        header("Location: erro.php");
+        exit;
     }
 
-   /* if (mysqli_insert_id($conexao)){
-        // echo "<scrip> alert(' ". strip_tags($_session['msg']). "')
-        // unset($_session['msg]);
-        echo "estou aqui";
-       header("location: login.html");
-
-       // $_SESSION['msg'] = "<p> Cliente Cadastrado com Sucesso</p>";
+    // Verifica se o arquivo é realmente uma imagem
+    $check = getimagesize($_FILES['arquivo_foto']['tmp_name']);
+    if ($check === false) {
+        $_SESSION['msg'] = "<p>O arquivo não é uma imagem válida.</p>";
+        header("Location: erro.php");
+        exit;
     }
-    else{
-        $_SESSION['msg'] = "<p> Cliente não Cadastrado</p>";
-     
-    }*/
- 
+
+    // Cria um novo nome para a imagem e define o diretório
+    $novo_nome = md5(time()) . '.' . $extensao;
+    $diretorio = "fotos/";
+
+    // Cria o diretório caso não exista
+    if (!is_dir($diretorio)) {
+        mkdir($diretorio, 0755, true);
+    }
+
+    // Move o arquivo para o diretório
+    if (move_uploaded_file($_FILES['arquivo_foto']['tmp_name'], $diretorio . $novo_nome)) {
+
+        // Prepara a consulta SQL para inserir os dados no banco
+        $resultSqlCliente = "
+            INSERT INTO tb_carros (numero_do_chassi, placa, marca, modelo, ano, cor, foto_caminho_carro)
+            VALUES ('$numero_do_chassi', '$placa', '$marca', '$modelo', '$ano', '$cor', '$diretorio$novo_nome')";
+
+        $resultadoCliente = mysqli_query($conexao, $resultSqlCliente);
+
+        // Verifica se a inserção foi bem-sucedida
+        if ($resultadoCliente) {
+            $_SESSION['msg'] = "<p>Carro cadastrado com sucesso.</p>";
+            header("Location: sucesso.php");
+            exit;
+        } else {
+            $_SESSION['msg'] = "<p>Erro ao cadastrar o carro no banco de dados. " . mysqli_error($conexao) . "</p>";
+            header("Location: erro.php");
+            exit;
+        }
+    } else {
+        $_SESSION['msg'] = "<p>Erro ao mover o arquivo de foto.</p>";
+        header("Location: erro.php");
+        exit;
+    }
+} else {
+    $_SESSION['msg'] = "<p>Nenhuma foto enviada ou erro no upload.</p>";
+    header("Location: erro.php");
+    exit;
+}
+ //else {
+//$_SESSION['msg'] = "<p>Erro: Todos os campos são obrigatórios.</p>";
+//header("Location: erro.php");
+//exit;
+//}
  ?>

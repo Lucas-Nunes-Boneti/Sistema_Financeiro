@@ -1,35 +1,39 @@
 <?php
-
+echo "estou aqui";
 session_start();
 include("..\banco_de_dados\conexao.php");
 
 //entrada de dados vindos do HTML
 $cpf = $_POST['cpf'];
+$data_nascimento = $_POST['datanascimento'];
 $nome = $_POST['nome'];
+$profissao = $_POST['profissao'];
 $email = $_POST['email'];
-$Telefone = $_POST['celular'];
-$Tipo_de_Usuario = $_POST['Tipo_de_Usuario'];
+$Telefone = $_POST['telefone'];
+$cidade = $_POST['cidade'];
+$endereco = $_POST['endereco'];
+$bairro = $_POST['bairro'];
 $sexo = $_POST['sexo'];
-$senha = $_POST['senha'];
-$confirmarsenha = $_POST['confirmarsenha'];
+$cep = $_POST['cep'];
+$numero = $_POST['numero'];
+//$arquivo_fotos = $_FILES['foto'];
  
 //verifica se algum dado nao foi informado
 if (
     empty($cpf) || empty($nome) || empty($Telefone) ||
-    empty($Tipo_de_Usuario) || empty($email) ||
-    empty($sexo) || empty($senha) || empty($confirmarsenha) ){
-    
-        echo " É necessário informar todos os campos";
-        exit;
-    }
-   if ($senha != $confirmarsenha){
-      echo " Senhas são diferentes";
-   }
-  // Verifica se o arquivo foi enviado e se não houve erro
-  if ($_FILES['arquivo_foto']['error'] === UPLOAD_ERR_OK) {
+    empty($data_nascimento) || empty($email) ||
+    empty($sexo) || empty($profissao) || empty($cidade) ||
+    empty($endereco) || empty($bairro) || empty($cep) || empty($numero)
+) {
+    echo "É necessário informar todos os campos";
+    exit;
+}
+  
+// Verifica se o arquivo foi enviado e se não houve erro
+if ($_FILES['foto']['error'] === UPLOAD_ERR_OK) {
 
     // Verifica a extensão do arquivo
-    $extensao = strtolower(pathinfo($_FILES['arquivo_foto']['name'], PATHINFO_EXTENSION));
+    $extensao = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
     $tipos_aceitos = ['jpg', 'jpeg', 'png', 'gif'];
     if (!in_array($extensao, $tipos_aceitos)) {
         $_SESSION['msg'] = "<p>Formato de imagem inválido. Apenas JPG, JPEG, PNG e GIF são permitidos.</p>";
@@ -38,7 +42,7 @@ if (
     }
 
     // Verifica se o arquivo é realmente uma imagem
-    $check = getimagesize($_FILES['arquivo_foto']['tmp_name']);
+    $check = getimagesize($_FILES['foto']['tmp_name']);
     if ($check === false) {
         $_SESSION['msg'] = "<p>O arquivo não é uma imagem válida.</p>";
         header("Location: erro.php");
@@ -47,7 +51,7 @@ if (
 
     // Cria um novo nome para a imagem e define o diretório
     $novo_nome = md5(time()) . '.' . $extensao;
-    $diretorio = "fotos/";
+    $diretorio = "fotos/cadastro/";
 
     // Cria o diretório caso não exista
     if (!is_dir($diretorio)) {
@@ -55,22 +59,22 @@ if (
     }
 
     // Move o arquivo para o diretório
-    if (move_uploaded_file($_FILES['arquivo_foto']['tmp_name'], $diretorio . $novo_nome)) {
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $diretorio . $novo_nome)) {
 
         // Prepara a consulta SQL para inserir os dados no banco
         $resultSqlCliente = "
-            INSERT INTO tb_carros (numero_do_chassi, placa, marca, modelo, ano, cor, foto_caminho_carro)
-            VALUES ('$numero_do_chassi', '$placa', '$marca', '$modelo', '$ano', '$cor', '$diretorio$novo_nome')";
+            INSERT INTO tb_usuario (cep, cidade, cpf, data_nascimento, email, endereco, foto_cliente, nome, numero, profissao, sexo, telefone, bairro)
+            VALUES ('$cep', '$cidade', '$cpf', '$data_nascimento', '$email', '$endereco', '$diretorio$novo_nome', '$nome', '$numero', '$profissao', '$sexo', '$Telefone', '$bairro)";
 
         $resultadoCliente = mysqli_query($conexao, $resultSqlCliente);
 
         // Verifica se a inserção foi bem-sucedida
         if ($resultadoCliente) {
-            $_SESSION['msg'] = "<p>Carro cadastrado com sucesso.</p>";
+            $_SESSION['msg'] = "<p>Cadastro realizado com sucesso.</p>";
             header("Location: sucesso.php");
             exit;
         } else {
-            $_SESSION['msg'] = "<p>Erro ao cadastrar o carro no banco de dados. " . mysqli_error($conexao) . "</p>";
+            $_SESSION['msg'] = "<p>Erro ao cadastrar o usuário no banco de dados. " . mysqli_error($conexao) . "</p>";
             header("Location: erro.php");
             exit;
         }
@@ -84,9 +88,4 @@ if (
     header("Location: erro.php");
     exit;
 }
- //else {
-//$_SESSION['msg'] = "<p>Erro: Todos os campos são obrigatórios.</p>";
-//header("Location: erro.php");
-//exit;
-//}
- ?>
+?>

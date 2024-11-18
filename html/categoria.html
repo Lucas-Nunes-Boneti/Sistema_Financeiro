@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>categorias</title>
-    <link rel="stylesheet" href="cadastro.css"> 
+    <link rel="stylesheet" href="cadastro.css">
 </head>
-<body> 
-   <form>
-    <p>Categoria</p>
-    <div>
-        <label for="categoria">Nome da categoria:</label>
-        <input type="text" id="categoria" name="categoria" placeholder="Informe sua categoria" required>
-    </div>
-    <div>
-        <label for="tipo de categoria">tipo da categoria:</label>
-    <input type="text" id="tipo de categoria" name="tipo de categoria" placeholder="Informe seu tipo de categoria " required>
-    </div>   
 
-</form>
-</body> 
+<body>
+    <form>
+        <p>Categoria</p>
+        <div>
+            <label for="categoria">Nome da categoria:</label>
+            <input type="text" id="categoria" name="categoria" placeholder="Informe sua categoria" required>
+        </div>
+        <div>
+            <label for="tipo de categoria">Tipo da categoria:</label>
+            <input type="radio" id="tipo" name="tipo"> Despesa
+            <input type="radio" id="tipo" name="tipo"> Receita
+        </div>
+        <button type="submit" name="enviar">Cadastrar</button>
+
+    </form>
+</body>
+
 </html>

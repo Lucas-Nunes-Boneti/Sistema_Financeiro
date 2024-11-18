@@ -4,24 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>categorias</title>
+    <title>Categorias</title>
     <link rel="stylesheet" href="cadastro.css">
 </head>
 
 <body>
-    <form>
+    <form method="post" action="../php/categoria.php">
         <p>Categoria</p>
         <div>
             <label for="categoria">Nome da categoria:</label>
             <input type="text" id="categoria" name="categoria" placeholder="Informe sua categoria" required>
         </div>
         <div>
-            <label for="tipo de categoria">Tipo da categoria:</label>
-            <input type="radio" id="tipo" name="tipo"> Despesa
-            <input type="radio" id="tipo" name="tipo"> Receita
+            <label for="despesa">Tipo da categoria:</label>
+            <input type="radio" id="despesa" name="tipo" value="despesa"> Despesa
+            <input type="radio" id="receita" name="tipo" value="receita"> Receita
         </div>
         <button type="submit" name="enviar">Cadastrar</button>
-
     </form>
 </body>
 

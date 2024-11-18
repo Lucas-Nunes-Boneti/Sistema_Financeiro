@@ -1,35 +1,32 @@
 <?php
 session_start();
-include("");
-//entrada de dados vindos do HTML
-$nome_categoria = $_POST['nome_categoria'];
-$tipo_categoria = $_POST['tipo_categoria'];
+include("../banco_de_dados/conexao.php");
 
  
- 
-//verifica se algum dado nao foi informado
-if (
-    empty($Despesa) || empty($Receita)){
- 
-        echo " É necessário informar todos os campos";
-        exit;
-    }
+$nome_categoria = $_POST['categoria'];
+$tipo_categoria = $_POST['tipo'];
 
-    $resultSqlCategoria =
-     " insert into tb_categoria(nome_categoria, tipo_categoria)
-    values ('$Despesa', '$Receita',)";
  
-   
-    $resultadocategoria = mysqli_query($conexao, $resultSqlCategoria);
-    if ($resultadocategoria){
-        header("Location: categoria.php");
-    }
+if (empty($nome_categoria) || empty($tipo_categoria)) {
+    echo "É necessário informar todos os campos.";
+    exit;
+}
+
  
-    if (mysqli_insert_id($conexao)){
-        $_SESSION['msg'] = "<p></p>";
-    }
-    else{
-        $_SESSION['msg'] = "<p></p>";
-     
-    }
-    ?>
+$resultSqlCategoria = "INSERT INTO tb_categoria(nome_categoria, tipo_de_categoria) 
+                       VALUES ('$nome_categoria', '$tipo_categoria')";
+
+// Executar a query
+$resultadocategoria = mysqli_query($conexao, $resultSqlCategoria);
+
+if ($resultadocategoria) { 
+    $_SESSION['msg'] = "Categoria cadastrada com sucesso!";
+    header("Location: buscaCategoria.php");
+    exit;  
+} else {
+    // Caso haja erro na execução da query
+    $_SESSION['msg'] = "Erro ao cadastrar a categoria: " . mysqli_error($conexao);
+    header("Location: erro.html ");
+    exit;  
+}
+?>

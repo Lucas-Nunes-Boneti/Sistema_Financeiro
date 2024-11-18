@@ -20,6 +20,9 @@ body {
 
 /* Estilo do formulário */
 form {
+    background-color: #092b00;
+    padding: 60px;
+
     background-color: #283125;
     padding: 20px;
     border-radius: 8px;
@@ -51,7 +54,7 @@ label {
 }
 
 /* Campos de entrada */
-input[type="text"] , input[type="email"], input[type="password"]{
+input[type="text"] , input[type="email"], input[type="password"],  input[type="date"]{
     width: 100%;
     padding: 10px;
     font-size: 14px;
@@ -79,7 +82,7 @@ input[type="text"]:focus {
 
 /* Placeholder */
 input::placeholder {
-    color: #223615;
+    color: #000000;
 }
 
 /* Botão de envio */
@@ -107,7 +110,7 @@ button:hover {
 }
 
 .success {
-    color: green;
+    color: rgb(202, 95, 52);
     font-size: 12px;
     margin-top: 5px;
 }

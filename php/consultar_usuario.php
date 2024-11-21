@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <th>cep</th>  
                     <th>numero</th>  
                     <th>sexo</th>  
+                    <th>Foto </th>
                 </tr>";
 
         // Exibe os resultados
@@ -66,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <td>{$row['cep']}</td>
                     <td>{$row['numero']}</td>
                     <td>{$row['sexo']}</td> 
+                    <td>{$row['foto_cliente']}</td> 
                     
                           
                    

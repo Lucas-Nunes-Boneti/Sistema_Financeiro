@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../html/cadastro.css">
 </head>
 <body>
-    <form action="" method="post">
+    <form action="contasapagar2.php" method="post">
         <p>Contas a Pagar</p>
         <div class="container">
             <img src="" alt="">
@@ -18,12 +18,7 @@
             </label><br><br>
         </div>
         
-        <div>
-            <label for="categoria">Categoria:
-                <input type="text" id="categoria" name="categoria_texto"> 
-            </label><br><br>
-        </div>
-
+      
         <div>
             <label for="data">Data de Vencimento:
                 <input type="date" id="data" name="data">
@@ -49,8 +44,8 @@
             $result = $conexao->query($sql);
             ?>
     
-            <label for="categoria_select">Categoria:</label>
-            <select id="categoria_select" name="categoria">
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria">
                 <option value="">Selecione a categoria</option>
                 <?php
                 // Verifica se há dados retornados pela consulta

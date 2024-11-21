@@ -54,11 +54,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Exibe os resultados
         while ($row = mysqli_fetch_assoc($resultadoConsulta)) {
             $cpf = $row['cpf'];
+
+            $nome = htmlspecialchars($row['nome'], ENT_QUOTES, 'UTF-8');  
+            $data_nascimento = htmlspecialchars($row['data_nascimento'], ENT_QUOTES, 'UTF-8'); 
+            $profissao = htmlspecialchars($row['profissao'], ENT_QUOTES, 'UTF-8'); 
+            $cpf = htmlspecialchars($row['cpf'], ENT_QUOTES, 'UTF-8');  
+    
+            
+            $foto_cliente = $row['foto_cliente'] ? "fotos/cadastro/" . $row['foto_cliente'] : "fotos/padrao.jpg"; // Caminho da foto
+    
+            echo "<div style='text-align: center;'>";
+            echo "<img src='$foto_cliente' alt='$nome' style='width: 150px; height: 150px; object-fit: cover; border-radius: 10px;'>";
+            echo "<p>$nome</p>";
+          
+            echo "</div>";
+
+
             echo "<tr>
-                    <td>{$row['nome']}</td>
-                    <td>{$row['data_nascimento']}</td>
-                    <td>{$row['profissao']}</td>
-                    <td>{$row['cpf']}</td>
+                   
                     <td>{$row['email']}</td>
                     <td>{$row['telefone']}</td>
                     <td>{$row['cidade']}</td>
@@ -74,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                    
                   </tr>";
         }
+
         echo "</table>";
     } else {
         echo "Sem clientes no registro.";

@@ -63,9 +63,9 @@ if ($_FILES['foto']['error'] === UPLOAD_ERR_OK) {
 
         // Prepara a consulta SQL para inserir os dados no banco
         $resultSqlCliente = "
-            INSERT INTO tb_usuario (cep, cidade, cpf, data_nascimento, email, endereco, foto_cliente, nome, numero, profissao, sexo, telefone, bairro)
-            VALUES ('$cep', '$cidade', '$cpf', '$data_nascimento', '$email', '$endereco', '$diretorio$novo_nome', '$nome', '$numero', '$profissao', '$sexo', '$Telefone', '$bairro)";
-
+        INSERT INTO tb_usuario (cep, cidade, cpf, data_nascimento, email, endereco, foto_cliente, nome, numero, profissao, sexo, telefone, bairro)
+        VALUES ('$cep', '$cidade', '$cpf', '$data_nascimento', '$email', '$endereco', '$diretorio/$novo_nome', '$nome', '$numero', '$profissao', '$sexo', '$Telefone', '$bairro')";
+    
         $resultadoCliente = mysqli_query($conexao, $resultSqlCliente);
 
         // Verifica se a inserção foi bem-sucedida

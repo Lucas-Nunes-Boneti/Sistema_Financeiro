@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+p{
+    font-size: 50%;
+    color: aqua;
+}
+header {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+nav ul {
+    list-style: none;
+    gap: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+button.logout {
+    background-color: #f04e30;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* Esconde todas as seções, exceto a ativa */
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}

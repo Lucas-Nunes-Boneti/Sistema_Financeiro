@@ -20,22 +20,18 @@ body {
 
 /* Estilo do formulário */
 form {
-<<<<<<< HEAD
     background-color: #092b00;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 10px 10px rgba(156, 11, 11, 0.1);
-=======
-<<<<<<< HEAD
+ 
     background-color: #092b00;
     padding: 60px;
-=======
+
     background-color: #283125;
     padding: 20px;
->>>>>>> ca79be297f07e64da29b879fff0e22c5cc176746
     border-radius: 8px;
-    box-shadow: 0 10px 20px rgb(15, 156, 2);
->>>>>>> 426b86b3feb7e5c7598be05b1a072d5027b04bdd
+    box-shadow: 0 10px 20px rgb(15, 156, 2); 
     width: 100%;
     max-width: 600px;
       
@@ -63,11 +59,9 @@ label {
 }
 
 /* Campos de entrada */
-<<<<<<< HEAD
-input[type="text"] , input[type="email"], input[type="password"],input[type="number"] {
-=======
+ 
 input[type="text"] , input[type="email"], input[type="password"],  input[type="date"]{
->>>>>>> 426b86b3feb7e5c7598be05b1a072d5027b04bdd
+ 
     width: 100%;
     padding: 10px;
     font-size: 14px;
@@ -95,21 +89,23 @@ input[type="text"]:focus {
 
 /* Placeholder */
 input::placeholder {
-<<<<<<< HEAD
+ 
     color: #223615;
-=======
-    color: #000000;
->>>>>>> 426b86b3feb7e5c7598be05b1a072d5027b04bdd
+ 
+    color: #000000; 
 }
 
 /* Botão de envio */
 button {
+ 
+    background-color: #ffffff;
+    color: #030303;
+ 
     background-color: #929020;
-<<<<<<< HEAD
+ 
     color: #fff;
-=======
-    color: #0e0909;
->>>>>>> 426b86b3feb7e5c7598be05b1a072d5027b04bdd
+ 
+    color: #0e0909; 
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -131,11 +127,9 @@ button:hover {
 }
 
 .success {
-<<<<<<< HEAD
-    color: green;
-=======
-    color: rgb(202, 95, 52);
->>>>>>> 426b86b3feb7e5c7598be05b1a072d5027b04bdd
+ 
+    color: green; 
+    color: rgb(202, 95, 52); 
     font-size: 12px;
     margin-top: 5px;
 }
@@ -145,10 +139,8 @@ body {
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Impede a repetição da imagem */
   }
-<<<<<<< HEAD
+ 
   img{
     max-width: 100px;
   }
-=======
->>>>>>> 426b86b3feb7e5c7598be05b1a072d5027b04bdd
-  
+ 

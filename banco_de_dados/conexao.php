@@ -4,7 +4,6 @@
 $servidor = "localhost";
 $usuario = "root";
 $senha = "";
-$banco = "db_celulares";
 $banco = "db_sistema_financeiro";
  
 $conexao =
@@ -13,7 +12,7 @@ $conexao =
     mysqli_connect_error());
  
     if (isset($conexao)){
-        echo "<b>Banco de dados selecionados com sucesso!!!</b>";
+        echo "";
     }
  
  

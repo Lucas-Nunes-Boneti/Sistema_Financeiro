@@ -5,6 +5,7 @@ $servidor = "localhost";
 $usuario = "root";
 $senha = "";
 $banco = "db_celulares";
+$banco = "db_sistema_financeiro";
  
 $conexao =
   mysqli_connect($servidor, $usuario, $senha,$banco)

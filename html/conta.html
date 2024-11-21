@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contas</title>
+    <style>
+
+.centralizar-titulo {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../fotos/Designer.png');
+    margin: 50;
+    padding: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+
+    <form action="" method="POST">
+        <p>FORMAS DE PAGAMENTO</p>
+
+        <div class="container">
+          <img src="../fotos/dinheiro.png" alt="">
+        </div>
+
+        <div>
+            <label for="numero">NUMERO DA CONTA:
+                <input type="number" id="numero" name="numero" required></label><br><br>
+        </div>
+        <div>
+
+            <label for="tipo">Tipo de contas:<br>
+                <input type="radio" id="pix" name="tipo" value="pix">  Pix &#128178
+               <input type="radio" id="corrente" name="tipo" value="corrente">  Conta Corrente &#128181
+               <input type="radio" id="poupanca" name="tipo" value="poupanca"> Conta poupança &#128176
+               <input type="radio" id="credito" name="tipo" value="credito"> Credito  &#128179
+            </label>
+        </div>
+        <div>
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor" name="valor" value="">
+        </div>
+
+        <button type="submit" class="payment-btn">Pagar</button>
+
+    </form>
+</body>
+
+</html>

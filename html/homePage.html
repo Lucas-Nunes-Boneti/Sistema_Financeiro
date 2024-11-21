@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão Financeira</title>
+    <link rel="stylesheet" href="styleHome.css">
+</head>
+<body>
+    <div><p>Sistema de Gestão Financeira</p></div>
+    <header>
+        <nav class="menu"> 
+            <ul>
+                <li><a href="#" onclick="loadPage('dashboard')">Dashboard</a></li><br>
+                <li><a href="#" onclick="loadPage('Usuario.html')">Cadastro de Usuário</a></li><br>
+                <li><a href="#" onclick="loadPage('Categoria.html')">Cadastro de categorias</a></li><br>
+                <li><a href="#" onclick="loadPage('contasPagar.html')">Contas a Pagar</a></li><br>
+                <li><a href="#" onclick="loadPage('contasReceber.html')">Contas a Receber</a></li><br>
+                <li><a href="#" onclick="loadPage('relatorios')">Relatórios</a></li><br>
+                <li><a href="#" onclick="loadPage('perfil')">Perfil</a></li>
+            </ul>
+          
+        </nav>
+    </header>
+    <main class="main-content">
+        <!-- será carregada via AJAXXXXXX -->
+        <div id="content"></div>
+    </main>
+
+    <script src="home.js"></script>
+</body>
+</html>

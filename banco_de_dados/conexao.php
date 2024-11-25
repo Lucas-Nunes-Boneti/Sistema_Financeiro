@@ -3,9 +3,7 @@
 //dados para a conexão
 $servidor = "localhost";
 $usuario = "root";
-$senha = "";
-$senha = "";
-
+$senha = ""; 
 $banco = "db_sistema_financeiro";
 
 $conexao =

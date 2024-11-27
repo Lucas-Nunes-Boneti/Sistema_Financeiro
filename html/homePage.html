@@ -5,27 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestão Financeira</title>
     <link rel="stylesheet" href="styleHome.css">
-</head>
+ </head>
 <body>
-    <div><p>Sistema de Gestão Financeira</p></div>
+
     <header>
-        <nav class="menu"> 
-            <ul>
-                <li><a href="#" onclick="loadPage('dashboard')">Dashboard</a></li><br>
-                <li><a href="#" onclick="loadPage('Usuario.html')">Cadastro de Usuário</a></li><br>
-                <li><a href="#" onclick="loadPage('Categoria.html')">Cadastro de categorias</a></li><br>
-                <li><a href="#" onclick="loadPage('contasPagar.html')">Contas a Pagar</a></li><br>
-                <li><a href="#" onclick="loadPage('contasReceber.html')">Contas a Receber</a></li><br>
-                <li><a href="#" onclick="loadPage('relatorios')">Relatórios</a></li><br>
-                <li><a href="#" onclick="loadPage('perfil')">Perfil</a></li>
-            </ul>
-          
-        </nav>
+        <p>Sistema de Gestão Financeira</p>
     </header>
+
+    <nav class="menu"> 
+        <ul>
+            <li><a href="#" onclick="loadPage('dashboard')">Dashboard</a></li>
+            <li><a href="#" onclick="loadPage('Usuario.html')">Cadastro de Usuário</a></li>
+            <li><a href="#" onclick="loadPage('Categoria.html')">Cadastro de Categorias</a></li>
+            <li><a href="#" onclick="loadPage('contasPagar.html')">Contas a Pagar</a></li>
+            <li><a href="#" onclick="loadPage('contasReceber.html')">Contas a Receber</a></li>
+            <li><a href="#" onclick="loadPage('relatorios')">Relatórios</a></li>
+            <li><a href="#" onclick="loadPage('perfil')">Perfil</a></li>
+        </ul>
+    </nav>
+
     <main class="main-content">
-        <!-- será carregada via AJAXXXXXX -->
-        <div id="content"></div>
+        <!-- Conteúdo dinâmico será carregado aqui -->
+        <div id="content">
+            <h2>Bem-vindo ao Sistema de Gestão Financeira!</h2>
+           
+        </div>
     </main>
+
+    <footer>
+        <p>&copy; 2024 Sistema de Gestão Financeira | Todos os direitos reservados</p>
+    </footer>
 
     <script src="home.js"></script>
 </body>

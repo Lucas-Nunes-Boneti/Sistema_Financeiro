@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Usuário</title>
-    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="buscarcategoria.css">
 </head>
 <body>
 
@@ -26,7 +26,7 @@ include("../banco_de_dados/conexao.php"); // Corrigir caminho para o arquivo de 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
     $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
  
-    $sqlConsulta = "SELECT nome_categoria, tipo_categoria FROM nome_categoria WHERE nome_categoria LIKE '%$nome%'";
+    $sqlConsulta = "SELECT nome_categoria, tipo_de_categoria FROM tb_categoria WHERE nome_categoria LIKE '%$nome%'";
      
     $resultadoConsulta = mysqli_query($conexao, $sqlConsulta);
  
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         while ($row = mysqli_fetch_assoc($resultadoConsulta)) {
             echo "<tr>
                     <td>{$row['nome_categoria']}</td>
-                    <td>{$row['tipo_categoria']}</td>
+                    <td>{$row['tipo_de_categoria']}</td>
                   </tr>";
         }
         echo "</table>";

@@ -2,8 +2,8 @@
 
 //dados para a conexão
 $servidor = "localhost";
-$usuario = "root";
-$senha = ""; 
+$usuario = "root"; 
+$senha = "";  
 $banco = "db_sistema_financeiro";
 
 $conexao =

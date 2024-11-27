@@ -16,8 +16,7 @@ if (empty($nome) || empty($CNPJ) || empty($endereco) ||
     empty($telefone) || empty($email) ){     
     echo "É necessário informar todos os campos";
     exit;
-}
-  
+}  
 
         // Prepara a consulta SQL para inserir os dados no banco
         $resultSqlCliente = "
@@ -32,7 +31,7 @@ if (empty($nome) || empty($CNPJ) || empty($endereco) ||
             header("Location: sucesso.php");
             exit;
         } else {
-            $_SESSION['msg'] = "<p>Erro ao cadastrar o usuário no banco de dados. " . mysqli_error($conexao) . "</p>";
+            $_SESSION['msg'] = "<p>Erro ao cadastrar o fornecedo no banco de dados. " . mysqli_error($conexao) . "</p>";
             header("Location: erro.php");
             exit;
         }

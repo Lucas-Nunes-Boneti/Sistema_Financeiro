@@ -3,12 +3,12 @@ session_start();
 include("conexao.php");
 
 if (isset($_GET['cpf'])){
-    $numero_do_chassi = $_GET['numero_do_chassi'];
+    $cpf = $_GET['cpf'];
 
-    $sqlExcluir = "delete FROM tb_carros WHERE cpf='$cpf' ";
+    $sqlExcluir = "delete FROM tb_usuario WHERE cpf='$cpf' ";
   
     if (mysqli_query($conexao, $sqlExcluir)){
-        header("Location: consulta_carro.php");
+        header("Location: consultar_usuario.php");
     }else{
         echo "Não excluido";
 

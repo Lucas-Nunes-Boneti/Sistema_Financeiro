@@ -78,6 +78,11 @@
                     <td>{$cep}</td>
                     <td>{$numero}</td>
                     <td>{$sexo}</td>
+                       <td>
+                    <a href='editar_carro_locadora.php?numero_do_chassi={$cpf}'>editar</a>
+                    <a href='excluir_carros.php?numero_do_chassi={$cpf}'>Excluir</a>
+                    </td>
+                   
                 </tr>";
             }
  

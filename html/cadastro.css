@@ -100,11 +100,11 @@ button {
  
     background-color: #ffffff;
     color: #030303;
- 
+
     background-color: #929020;
- 
+
     color: #fff;
- 
+
     color: #0e0909; 
     padding: 12px 20px;
     border: none;
@@ -112,7 +112,7 @@ button {
     width: 100%;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: 0.3s;background-color: red;
 }
 
 button:hover {
@@ -143,4 +143,3 @@ body {
   img{
     max-width: 100px;
   }
- 

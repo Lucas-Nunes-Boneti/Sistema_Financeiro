@@ -21,7 +21,7 @@ $resultadocategoria = mysqli_query($conexao, $resultSqlCategoria);
 
 if ($resultadocategoria) { 
     $_SESSION['msg'] = "Categoria cadastrada com sucesso!";
-    header("Location: buscaCategoria.php");
+    header("Location: buscarCategoria.php");
     exit;  
 } else {
     // Caso haja erro na execução da query

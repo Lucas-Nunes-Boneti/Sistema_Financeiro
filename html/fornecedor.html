@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fornecedor</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+    <form name="form-usuario" action="../php/fornecedor.php" method="post" enctype="multipart/form-data">
+        <p class="centralizar-titulo"> <i>Fornecedor</i></p>
+
+        <!-- Campos do formulário -->
+        <div>
+            <label for="nome">Nome:
+                <input type="text" id="nome" name="nome" placeholder="Informe seu nome" required>
+            </label>
+        </div>
+        
+        <div>
+            <label for="datanascimento">CNPJ:
+                <input type="text" id="CNPJ" name="CNPJ" placeholder="informe seu CNPJ" required>
+            </label>
+        </div>
+
+        <div>
+            <label for="endereco">Endereço:
+                <input type="text" id="endereco" name="endereco" placeholder="Informe seu endereço" required>
+            </label>
+        </div>
+
+        <div>
+            <label for="bairro">Telefone:
+                <input type="text" id="telefone" name="telefone" placeholder="Informe seu telefone" required>
+            </label>
+        </div>
+
+        <div>
+            <label for="email">Email:
+                <input type="email" id="email" name="email" placeholder="Informe seu email" required>
+            </label>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    
+    <script src="../html/js/validar_cadastro.js"></script>
+</body>
+</html>

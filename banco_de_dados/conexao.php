@@ -4,8 +4,6 @@
 $servidor = "localhost";
 $usuario = "root";
 $senha = "";
-$senha = "";
-
 $banco = "db_sistema_financeiro";
 
 $conexao =

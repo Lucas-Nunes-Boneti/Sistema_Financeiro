@@ -18,3 +18,9 @@ function loadPage(page) {
 document.addEventListener('DOMContentLoaded', () => {
     loadPage('dashboard');
 });
+
+function loadPagee(page) {
+    // Esta função pode ser usada para carregar diferentes páginas, como por exemplo, usando AJAX
+    // Aqui apenas mostra um alerta como exemplo.
+    alert("Carregando página: " + page);
+}

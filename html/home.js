@@ -20,7 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadPagee(page) {
-    // Esta função pode ser usada para carregar diferentes páginas, como por exemplo, usando AJAX
-    // Aqui apenas mostra um alerta como exemplo.
-    alert("Carregando página: " + page);
+    fetch(page)
+        .then(response => response.text())
+        .then(data => {
+            // Acessa o elemento onde o conteúdo será carregado
+            document.getElementById("content").innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Erro ao carregar o conteúdo:', error);
+            document.getElementById("content").innerHTML = "<p>Erro ao carregar o conteúdo.</p>";
+        });
 }

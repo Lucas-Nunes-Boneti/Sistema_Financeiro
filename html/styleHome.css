@@ -101,55 +101,59 @@ footer {
     }
 }
 
-  /* Estilos do Menu */
-  .menu {
-    list-style-type: none;
+.menu {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    width: 200px; /* Definindo largura para o menu */
+}
+
+.menu ul {
+    list-style: none;
     padding: 0;
     margin: 0;
-    background-color: #333;
 }
 
-.menu > li {
+.menu > ul > li {
     position: relative;
-    display: inline-block;
+    padding: 10px;
 }
 
-.menu > li > a {
-    display: block;
-    padding: 14px 20px;
-    color: white;
+.menu a {
+    color: #fff;
     text-decoration: none;
+    padding: 10px 20px;
+    display: block;
 }
 
-.menu > li > a:hover {
-    background-color: #575757;
-}
-
-/* Submenu */
+/* Submenu oculto inicialmente */
 .submenu {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
+    top: 0;
+    left: 100%; /* Coloca o submenu à direita do item */
+    background-color: #444;
     min-width: 200px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    z-index: 10; /* Garante que o submenu fique acima dos outros itens */
+    border-radius: 4px;
 }
 
-.submenu > li > a {
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
+.submenu li {
+    padding: 10px;
 }
 
-.submenu > li > a:hover {
-    background-color: #575757;
+.submenu li a {
+    padding: 8px 12px;
 }
 
-/* Mostrar submenu ao passar o mouse */
-.menu > li:hover .submenu {
+/* Exibe o submenu quando passar o mouse sobre o item principal */
+.menu > ul > li:hover > .submenu {
     display: block;
+}
+
+.menu > ul > li > a:hover {
+    background-color: #555;
+}
+
+/* Estilo de hover para os itens do submenu */
+.submenu li a:hover {
+    background-color: #666;
 }

@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $nome = $_POST['nome'];
  
     // Consulta os dados na tabela 'tb_cliente' com base no nome
-    $sqlConsulta = "SELECT * FROM tb_contas_pagar WHERE nome LIKE '%$nome%'";
+    $sqlConsulta = "SELECT * FROM tb_contas_a_pagar WHERE nome LIKE '%$nome%'";
     $resultadoConsulta = mysqli_query($conexao, $sqlConsulta);
  
     // Verifica se há resultados

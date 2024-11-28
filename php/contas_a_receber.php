@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contas a Pagar</title>
+    <title>Contas a receber</title>
     <link rel="stylesheet" href="../html/cadastro.css">
 </head>
 <body>
     <form action="contasapagar2.php" method="post">
-        <p>Contas a Pagar</p>
+        <p>Contas a receber</p>
         <div class="container">
             <img src="" alt="">
    
@@ -20,14 +20,8 @@
         
       
         <div>
-            <label for="data">Data de Vencimento:
+            <label for="data">Data de recebimento:
                 <input type="date" id="data" name="data">
-            </label><br><br>
-        </div>
-
-        <div>
-            <label for="descricao">Descrição da Despesa:
-                <input type="text" id="descricao" name="descricao" required>
             </label><br><br>
         </div>
 
@@ -36,31 +30,7 @@
                 <input type="number" id="valor" name="valor" min="0" step="0.01" required>
             </label><br><br>
         </div>
-        <div>
-           <?php
-            include("../banco_de_dados/conexao.php");
-            $sql = "SELECT * FROM tb_fornecedor";
-            $result = $conexao->query($sql);
-            ?>
-    
-            <label for="fornecedor">Fornecedor:</label>
-            <select id="fornecedor" name="fornecedor">
-                <option value="">Selecione o Fornecedor</option>
-                <?php
-                 
-                if ($result->num_rows > 0) {
-                    // loop que verifica se há categorias
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<option value="' . $row['id_cnpj'] . '">' . $row['nome'] . '</option>';
-                    }
-                } else {
-                    echo '<option value="">Nenhuma Fornecedor encontrado</option>';
-                }
-                ?>
-            </select>
-            <br>
-        </div>
-        
+
         <div>
             <?php
             include("../banco_de_dados/conexao.php");
@@ -84,15 +54,8 @@
                 ?>
             </select>
         </div>
-        <div>
-           <label for="status">Status
-                <input type="radio" name="status" value="pendente">Pendente
-                <input type="radio" name="status" value="vencido">Vencido
-                <input type="radio" name="status" value="recebido">Recebido
-            </label>
-        </div>
 
-        <button type="submit" name="cadastrar">Registrar</button>
+        <button type="submit" >Registrar</button>
        
     </form>
 </body>

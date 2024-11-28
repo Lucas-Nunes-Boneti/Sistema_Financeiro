@@ -43,18 +43,16 @@
                 $endereco = htmlspecialchars($row['endereco'], ENT_QUOTES, 'UTF-8');
                 $telefone = htmlspecialchars($row['telefone'], ENT_QUOTES, 'UTF-8');
                 $email = htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8');
-                // Caminho da foto (caso não tenha, usa imagem padrão)
-
-                echo "<tr>
-                    <td style='text-align: center;'>
+              
+                echo "<tr> 
                     <td>{$nome}</td>
                     <td>{$CNPJ}</td>
                     <td>{$endereco}</td>
                     <td>{$telefone}</td>
                     <td>{$email}</td>
                        <td>
-                        <a href='editarFornecedor.php?id_cnpj=$id_cnpj'>Editar</a>
-                        <a href='excluirFornecedor.php?id_cnpj=$id_cnpj'>Excluir</a>
+                        <a href='editarFornecedor.php?id_cnpj=$CNPJ'>Editar</a>
+                        <a href='excluirFornecedor.php?id_cnpj=$CNPJ'>Excluir</a>
                     </td>
                 </tr>";
             }

@@ -79,8 +79,8 @@
                     <td>{$numero}</td>
                     <td>{$sexo}</td>
                        <td>
-                    <a href='editar_carro_locadora.php?numero_do_chassi={$cpf}'>editar</a>
-                    <a href='excluir_carros.php?numero_do_chassi={$cpf}'>Excluir</a>
+                    <a href='editar_editarCliente.php?cpf={$cpf}'>editar</a>
+                    <a href='excluir_excluir.cliente.php?cpf={$cpf}'>Excluir</a>
                     </td>
                    
                 </tr>";

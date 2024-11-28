@@ -36,7 +36,31 @@
                 <input type="number" id="valor" name="valor" min="0" step="0.01" required>
             </label><br><br>
         </div>
-
+        <div>
+           <?php
+            include("../banco_de_dados/conexao.php");
+            $sql = "SELECT * FROM tb_fornecedor";
+            $result = $conexao->query($sql);
+            ?>
+    
+            <label for="fornecedor">Fornecedor:</label>
+            <select id="fornecedor" name="fornecedor">
+                <option value="">Selecione o Fornecedor</option>
+                <?php
+                 
+                if ($result->num_rows > 0) {
+                    // loop que verifica se há categorias
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row['id_cnpj'] . '">' . $row['nome'] . '</option>';
+                    }
+                } else {
+                    echo '<option value="">Nenhuma Fornecedor encontrado</option>';
+                }
+                ?>
+            </select>
+            <br>
+        </div>
+        
         <div>
             <?php
             include("../banco_de_dados/conexao.php");
@@ -60,8 +84,15 @@
                 ?>
             </select>
         </div>
+        <div>
+           <label for="status">Status
+                <input type="radio" name="status" value="pendente">Pendente
+                <input type="radio" name="status" value="vencido">Vencido
+                <input type="radio" name="status" value="recebido">Recebido
+            </label>
+        </div>
 
-        <button type="submit" >Registrar</button>
+        <button type="submit" name="cadastrar">Registrar</button>
        
     </form>
 </body>

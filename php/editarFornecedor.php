@@ -2,7 +2,7 @@
 include("conexao.php");
  
 if (isset($_GET['id_cnpj'])) {
-    $idcelular = $_GET['id_cnpj'];
+    $idcnpj = $_GET['id_cnpj'];
  
     // Buscar os dados do celular pelo nome
     $sqlBusca = "SELECT * FROM tb_fornecedor WHERE id_cnpj = '$idcnpj'";

@@ -5,23 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>consulta </title>
-    <style>
-    body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #228B22;
-    color: #4B3621;
-    text-align: center;
- }
- div{
-    padding: 5px;
-    font-size: 15px;
-
- }
-
-
-    </style>
+    <link rel="stylesheet" href="../html/cadastro.css">
 </head>
 <body>
     <h1> consuta</h1>
@@ -53,25 +37,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <th>categoria</th>
                     <th>data</th>
                     <th>descricao</th>
-                    <th>valor</th>
-                    
+                    <th>valor</th>                 
               
                 </tr>";
  
         // Exibe os resultados
         while ($row = mysqli_fetch_assoc($resultadoConsulta)) {
-            $idcontaspagar = $row['idcontaspagar'];
+            $idcontaspagar = $row['id_contas_a_pagar'];
             echo "<tr>
                     <td>{$row['nome']}</td>
-                    <td>{$row['idcategoria']}</td>
+                    <td>{$row['id_categoria']}</td>
                     <td>{$row['data_vencimento']}</td>
-                    <td>{$row['descricao_dispesa']}</td>
-                    <td>{$row['valor']}</td>
-                    
-        
-                    <td>
-                    <a href='editarcontapagar.php?id_vagas=$idcontaspagar'>editar</a>
-                    <a href='excluircontapagar.php?id_vagas=$idcontaspagar' >excluir</a>
+                    <td>{$row['descricao']}</td>
+                    <td>{$row['valor']}</td>       
+                    <td> 
+                    <a href='editarcontapagar.php?id_contas_a_pagar={$idcontaspagar}'>editar</a>
+                    <a href='excluircontapagar.php?id_contas_a_pagar={$idcontaspagar}'>excluir</a>
                     </td>
                   </tr>";
         }

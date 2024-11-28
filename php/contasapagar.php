@@ -26,14 +26,14 @@
         </div>
 
         <div>
-            <label for="descricao">Descrição da Despesa:
-                <input type="text" id="descricao" name="descricao" required>
+            <label for="descricao">Descrição:
+                <input type="text" id="descricao" name="descricao" >
             </label><br><br>
         </div>
 
         <div>
             <label for="valor">Valor:
-                <input type="number" id="valor" name="valor" min="0" step="0.01" required>
+                <input type="number" id="valor" name="valor" min="0" step="0.01" >
             </label><br><br>
         </div>
         <div>

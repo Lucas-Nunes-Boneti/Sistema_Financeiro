@@ -1,11 +1,11 @@
 <?php
-include("conexao.php");
-
-if (isset($_GET['idcontaspagar'])) {
-    $idcontaspagar = $_GET['idcontaspagar'];
-
+include("../banco_de_dados/conexao.php");
+echo "to aqui";
+if (isset($_GET['id_contas_a_pagar'])) {
+    $idcontaspagar = $_GET['id_contas_a_pagar'];
+    echo "to aqui ";
     // Buscar os dados do cliente pelo CPF
-    $sqlBusca = "SELECT * FROM tb_contas_pagar WHERE nome = '$idcontaspagar'";
+    $sqlBusca = "SELECT * FROM tb_contas_a_pagar WHERE id_contas_a_pagar = '$idcontaspagar'";
     $resultadoBusca = mysqli_query($conexao, $sqlBusca);
     $cliente = mysqli_fetch_assoc($resultadoBusca);
 
@@ -17,23 +17,23 @@ if (isset($_GET['idcontaspagar'])) {
 
     // Preenche as variáveis com os dados do cliente para exibir no formulário
     $nome = $cliente['nome'];
-    $categoria = $cliente['idcategoria'];
+    $categoria = $cliente['id_categoria'];
     $data_vencimento = $cliente['data_vencimento'];
-    $descricao = $cliente['descricao_dispesa'];
+    $descricao = $cliente['descricao'];
     $valor = $cliente['valor'];
 }
 
 // Atualiza o cliente se o formulário for enviado via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
-    $categoria = $_POST['idcategoria'];
+    $categoria = $_POST['id_categoria'];
     $data = $_POST['data_vencimento'];
     $descricao = $_POST['descricao'];
     $valor = $_POST['valor'];
 
 
 
-    $sqlUpdate = "UPDATE tb_contas_pagar SET nome = '$nome',  idcategoria = '$categoria',data_vencimento = '$data_vencimento',descricao_dispesa = '$descricao_despesa',valor = '$valor' WHERE idcontaspagar = '$idcontaspagar'";
+    $sqlUpdate = "UPDATE tb_contas_a_pagar SET nome = '$nome',  id_categoria = '$id_categoria',data_vencimento = '$data_vencimento',descricao = '$descricao',valor = '$valor' WHERE id_contas_a_pagar = '$id_contas_a_pagar'";
 
     if (mysqli_query($conexao, $sqlUpdate)) {
         echo "Cliente alterado com sucesso";
@@ -58,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="contasapagar2.php" method="post">
         <p>Contas a Pagar</p>
         <div class="container">
-            <img src="" alt="">
 
             <div>
                 <label for="nome">Nome:

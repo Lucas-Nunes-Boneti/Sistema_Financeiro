@@ -71,7 +71,8 @@ if ($_FILES['foto']['error'] === UPLOAD_ERR_OK) {
         // Verifica se a inserção foi bem-sucedida
         if ($resultadoCliente) {
             $_SESSION['msg'] = "<p>Cadastro realizado com sucesso.</p>";
-            header("Location: consultar_cliente.php");
+            echo"<script> alert('usuario cadastrado');</script>";
+            header("Location: ../html/homePage.html");
             exit;
         } else {
             $_SESSION['msg'] = "<p>Erro ao cadastrar o usuário no banco de dados. " . mysqli_error($conexao) . "</p>";

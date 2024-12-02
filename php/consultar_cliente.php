@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
-    <h1>Consulta De Clientes Por Nome</h1>
-    <form action="" method="POST">
+    <h1>Consulta de Clientes por Nome</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
         <label for="nome">Nome dos Clientes:</label>
-        <input type="text" id="nome" name="nome" required>
-        <input type="submit" value="Buscar">
+        <input type="text" id="nome" name="nome"  ><br>
+        <button type="submit" value="Buscar">Buscar</button>
     </form>
  
     <?php
@@ -74,13 +74,13 @@
                     <td>{$telefone}</td>
                     <td>{$cidade}</td>
                     <td>{$endereco}</td>
-                    <td>{$bairro}</td>
+                    <td>{$bairro}</td>=
                     <td>{$cep}</td>
                     <td>{$numero}</td>
                     <td>{$sexo}</td>
                        <td>
-                    <a href='editar_editarCliente.php?cpf={$cpf}'>editar</a>
-                    <a href='excluir_excluir.cliente.php?cpf={$cpf}'>Excluir</a>
+                    <a href='editarCliente.php?cpf={$cpf}'>editar</a>
+                    <a href='excluirCliente.php?cpf={$cpf}'>Excluir</a>
                     </td>
                    
                 </tr>";

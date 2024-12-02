@@ -1,8 +1,8 @@
 <?php
-include("conexao.php");
+ include("../banco_de_dados/conexao.php");
  
 if (isset($_GET['id_cnpj'])) {
-    $idcelular = $_GET['id_cnpj'];
+    $idcnpj = $_GET['id_cnpj'];
  
     // Buscar os dados do celular pelo nome
     $sqlBusca = "SELECT * FROM tb_fornecedor WHERE id_cnpj = '$idcnpj'";
@@ -17,7 +17,7 @@ if (isset($_GET['id_cnpj'])) {
  
     // Preenche as variáveis com os dados do celular para exibir no formulário
     $nome = $fornecedor['nome'];
-    $CNPJ = $fornecedor['CNPJ'];
+    $CNPJ = $fornecedor['id_cnpj'];
     $endereco = $fornecedor['endereco'];
     $telefone = $fornecedor['telefone'];
     $email = $fornecedor['email'];
@@ -27,14 +27,14 @@ if (isset($_GET['id_cnpj'])) {
 // Atualiza o celular se o formulário for enviado via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
-    $CNPJ = $_POST['CNPJ'];
+    $CNPJ = $_POST['id_cnpj'];
     $endereco = $_POST['endereco'];
     $telefone = $_POST['telefone'];
     $email = $_POST['email'];
  
     $sqlUpdate = "UPDATE tb_fornecedor SET
         nome = '$nome',
-        CNPJ = '$CNPJ',
+        id_cnpj = '$CNPJ',
         endereco = '$endereco',
         telefone = '$telefone',
         email = '$email',

@@ -1,9 +1,9 @@
- -- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02/12/2024 às 15:53
+-- Tempo de geração: 04/12/2024 às 12:54
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `tb_categoria`
+--
+
+CREATE TABLE `tb_categoria` (
+  `id_categoria` int(11) NOT NULL,
+  `nome_categoria` varchar(45) NOT NULL,
+  `tipo_de_categoria` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Despejando dados para a tabela `tb_categoria`
+--
+
+INSERT INTO `tb_categoria` (`id_categoria`, `nome_categoria`, `tipo_de_categoria`) VALUES
+(1, 'Internet', 'Internet'),
+(2, 'Energia', 'Energia');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `tb_contas_a_pagar`
 --
 
@@ -38,9 +58,82 @@ CREATE TABLE `tb_contas_a_pagar` (
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tb_contas_a_receber`
+--
+
+CREATE TABLE `tb_contas_a_receber` (
+  `id_contas_a_receber` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `descricao` varchar(100) NOT NULL,
+  `valor` float NOT NULL,
+  `data_vencimento` date NOT NULL,
+  `statuss` varchar(100) NOT NULL,
+  `cpf` char(14) NOT NULL,
+  `data_inicial` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tb_fornecedor`
+--
+
+CREATE TABLE `tb_fornecedor` (
+  `id_cnpj` char(14) NOT NULL,
+  `nome` char(100) NOT NULL,
+  `endereco` char(14) NOT NULL,
+  `telefone` char(14) NOT NULL,
+  `email` char(14) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `tb_fornecedor`
+--
+
+INSERT INTO `tb_fornecedor` (`id_cnpj`, `nome`, `endereco`, `telefone`, `email`) VALUES
+('1', 'Não especificado', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tb_usuario`
+--
+
+CREATE TABLE `tb_usuario` (
+  `cpf` varchar(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
+  `sexo` varchar(100) NOT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `profissao` varchar(50) DEFAULT NULL,
+  `cidade` varchar(100) DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `cep` varchar(10) DEFAULT NULL,
+  `numero` int(11) DEFAULT NULL,
+  `foto_cliente` varchar(255) DEFAULT NULL,
+  `bairro` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `tb_usuario`
+--
+
+INSERT INTO `tb_usuario` (`cpf`, `nome`, `email`, `telefone`, `sexo`, `data_nascimento`, `profissao`, `cidade`, `endereco`, `cep`, `numero`, `foto_cliente`, `bairro`) VALUES
+('119.774.489', 'Rafael', 'rrafael.nuness432@gmail.com', '4598172919', 'Masculino', '2024-12-01', 'operador', 'ramilandia', 'rua 25 de julho', '85888000', 20, 'fotos/cadastro//9898e19aba0282a4ed88002f1d9dd515.jpg', 'vila unida');
+
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `tb_categoria`
+--
+ALTER TABLE `tb_categoria`
+  ADD PRIMARY KEY (`id_categoria`);
 
 --
 -- Índices de tabela `tb_contas_a_pagar`
@@ -49,6 +142,26 @@ ALTER TABLE `tb_contas_a_pagar`
   ADD PRIMARY KEY (`id_contas_a_pagar`),
   ADD KEY `id_cnpj` (`id_cnpj`),
   ADD KEY `id_categoria` (`id_categoria`);
+
+--
+-- Índices de tabela `tb_contas_a_receber`
+--
+ALTER TABLE `tb_contas_a_receber`
+  ADD PRIMARY KEY (`id_contas_a_receber`),
+  ADD KEY `cpf` (`cpf`);
+
+--
+-- Índices de tabela `tb_fornecedor`
+--
+ALTER TABLE `tb_fornecedor`
+  ADD PRIMARY KEY (`id_cnpj`);
+
+--
+-- Índices de tabela `tb_usuario`
+--
+ALTER TABLE `tb_usuario`
+  ADD PRIMARY KEY (`cpf`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -61,6 +174,12 @@ ALTER TABLE `tb_contas_a_pagar`
   MODIFY `id_contas_a_pagar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `tb_contas_a_receber`
+--
+ALTER TABLE `tb_contas_a_receber`
+  MODIFY `id_contas_a_receber` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restrições para tabelas despejadas
 --
 
@@ -70,6 +189,12 @@ ALTER TABLE `tb_contas_a_pagar`
 ALTER TABLE `tb_contas_a_pagar`
   ADD CONSTRAINT `tb_contas_a_pagar_ibfk_1` FOREIGN KEY (`id_cnpj`) REFERENCES `tb_fornecedor` (`id_cnpj`),
   ADD CONSTRAINT `tb_contas_a_pagar_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categoria` (`id_categoria`);
+
+--
+-- Restrições para tabelas `tb_contas_a_receber`
+--
+ALTER TABLE `tb_contas_a_receber`
+  ADD CONSTRAINT `tb_contas_a_receber_ibfk_1` FOREIGN KEY (`cpf`) REFERENCES `tb_usuario` (`cpf`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

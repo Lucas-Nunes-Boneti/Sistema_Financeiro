@@ -44,7 +44,7 @@ $contasExibidas = filtrarContas($descricaoFiltro, $dataVencimentoFiltro);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Contas a Receber</title>
+    <title>Consulta de Contas a pagar</title>
     <style>
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
@@ -53,7 +53,7 @@ $contasExibidas = filtrarContas($descricaoFiltro, $dataVencimentoFiltro);
 </head>
 <body>
  
-<h2>Consulta de Contas a Receber</h2>
+<h2>Consulta de Contas a Pagar</h2>
  
 <!-- Formulário de consulta -->
 <form method="GET">
@@ -98,4 +98,3 @@ $contasExibidas = filtrarContas($descricaoFiltro, $dataVencimentoFiltro);
  
 </body>
 </html>
-tem menu de contexto

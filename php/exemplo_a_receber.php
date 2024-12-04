@@ -98,5 +98,4 @@ if (isset($_GET['pagar'])) {
 </table>
  
 </body>
-</html>
-tem menu de contexto
+</html> 

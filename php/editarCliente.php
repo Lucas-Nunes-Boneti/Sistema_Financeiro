@@ -19,7 +19,7 @@ if (isset($_GET['cpf'])) {
     $bairro = $cliente['bairro'];
     $sexo = $cliente['sexo'];
     $cep = $cliente['cep'];
-    $numero = $cliente['numero'];
+    $numero = $cliente['numero'];   
     $foto = $cliente['foto']; // Adiciona o campo foto
 }
 

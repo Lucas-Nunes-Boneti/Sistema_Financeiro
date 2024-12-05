@@ -1,7 +1,7 @@
 
 function loadPage(page) {
     // Verifica se é uma página interna ou externa (Dashboard, Perfil etc. são seções internas)
-    if (page === 'dashboard' || page === 'contasPagar' || page === 'contasReceber' ||
+    if (page === 'dashboard' || page === 'cliente' || page === 'contasPagar' || page === 'contasReceber' ||
         page === 'relatorios' || page === 'perfil') {
         document.getElementById('content').innerHTML = document.getElementById(page).innerHTML;
     } else {

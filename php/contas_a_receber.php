@@ -11,48 +11,55 @@
         <p>Contas a receber</p>
         <div class="container">
             <img src="" alt="">
-   
-        <div>
-            <label for="nome">Nome: 
-                <input type="text" id="nome" name="nome" required>
-            </label><br><br>
+            <div>
+            <label for="data">Data:
+                <input type="date" id="data_inicial" name="data_inicial">
+            </label> 
         </div>
-        
-      
+             
+           <div>
+            <?php
+            include("../banco_de_dados/conexao.php");
+            $sql = "SELECT nome FROM tb_usuario";
+            $result = $conexao->query($sql);
+            ?>
+    
+            <label for="cpf">Cliente:</label>
+            <select id="cpf" name="cpf">
+                <option value="">Selecione o Cliente:</option>
+                <?php 
+                if ($result->num_rows > 0) { 
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row['cpf'] . '">' . $row['nome'] . '</option>';
+                    }
+                } else {
+                    echo '<option value="">Nenhuma cliente encontrada</option>';
+                }
+                ?>
+            </select>
+        </div>
         <div>
-            <label for="data">Data de recebimento:
-                <input type="date" id="data" name="data">
-            </label><br><br>
+            <label for="nome">Descrição: 
+                <input type="text" id="nome" name="nome"  >
+            </label> 
+        </div>
+        <div>
+            <label for="data">Data de Vencimento:
+                <input type="date" id="data_vencimento" name="data_vencimento">
+            </label> 
         </div>
 
         <div>
             <label for="valor">Valor:
-                <input type="number" id="valor" name="valor" min="0" step="0.01" required>
-            </label><br><br>
+                <input type="number" id="valor" name="valor"  >
+            </label> 
         </div>
-
         <div>
-            <?php
-            include("../banco_de_dados/conexao.php");
-            $sql = "SELECT * FROM tb_categoria";
-            $result = $conexao->query($sql);
-            ?>
-    
-            <label for="categoria">Categoria:</label>
-            <select id="categoria" name="categoria">
-                <option value="">Selecione a categoria</option>
-                <?php
-                // Verifica se há dados retornados pela consulta
-                if ($result->num_rows > 0) {
-                    // loop que verifica se há categorias
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<option value="' . $row['id_categoria'] . '">' . $row['nome_categoria'] . '</option>';
-                    }
-                } else {
-                    echo '<option value="">Nenhuma categoria encontrada</option>';
-                }
-                ?>
-            </select>
+            <label for="status">Situação:
+                <input type="radio" id="pendente" name="status"  >Pendente &nbsp;&nbsp;
+                <input type="radio" id="baixada" name="status"  >Baixada&nbsp;&nbsp;
+                <input type="radio" id="vencida" name="status"  >Vencida
+            </label>
         </div>
 
         <button type="submit" >Registrar</button>

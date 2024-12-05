@@ -17,8 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['descricao'], $_GET['data
 // Função para filtrar as contas com base nos critérios de pesquisa
 function filtrarContas($descricao, $dataVencimento, $status, $conexao) {
     // Prepara a consulta SQL com os filtros
-    $sql = "SELECT id_contas_a_receber, descricao, valor, data_vencimento, statuss, cpf, data_inicial FROM tb_contas_a_receber WHERE 1";
-    
+    $sql = "SELECT id_contas_a_pagar, nome, descricao, valor, data_vencimento, statuss, id_cnpj, id_categoria 
+            FROM tb_contas_a_pagar WHERE 1";
+
     // Verifica se há um filtro para a descrição
     if (!empty($descricao)) {
         $descricao = mysqli_real_escape_string($conexao, $descricao); // Protege contra injeção de SQL
@@ -60,7 +61,7 @@ $contasExibidas = filtrarContas($descricaoFiltro, $dataVencimentoFiltro, $status
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Contas a Receber</title>
+    <title>Consulta de Contas a Pagar</title>
     <style>
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
@@ -69,10 +70,10 @@ $contasExibidas = filtrarContas($descricaoFiltro, $dataVencimentoFiltro, $status
 </head>
 <body>
 
-<h2>Consulta de Contas a Receber</h2>
+<h2>Consulta de Contas a Pagar</h2>
 
 <!-- Formulário de consulta -->
-<form method="GET" action="consults.php">
+<form method="GET" action="consultar_contas_a_pagar.php">
     <label for="descricao">Descrição:</label>
     <input type="text" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricaoFiltro); ?>"><br><br>
 
@@ -97,30 +98,32 @@ $contasExibidas = filtrarContas($descricaoFiltro, $dataVencimentoFiltro, $status
     <thead>
         <tr>
             <th>ID</th>
+            <th>Nome</th>
             <th>Descrição</th>
             <th>Valor</th>
             <th>Data de Vencimento</th>
             <th>Status</th>
-            <th>CPF</th>
-            <th>Data Inicial</th>
+            <th>ID CNPJ</th>
+            <th>ID Categoria</th>
         </tr>
     </thead>
     <tbody>
         <?php if (count($contasExibidas) > 0): ?>
             <?php foreach ($contasExibidas as $conta): ?>
             <tr>
-                <td><?php echo htmlspecialchars($conta['id_contas_a_receber']); ?></td>
+                <td><?php echo htmlspecialchars($conta['id_contas_a_pagar']); ?></td>
+                <td><?php echo htmlspecialchars($conta['nome']); ?></td>
                 <td><?php echo htmlspecialchars($conta['descricao']); ?></td>
                 <td>R$ <?php echo number_format($conta['valor'], 2, ',', '.'); ?></td>
                 <td><?php echo date('d/m/Y', strtotime($conta['data_vencimento'])); ?></td>
                 <td><?php echo htmlspecialchars($conta['statuss']); ?></td>
-                <td><?php echo htmlspecialchars($conta['cpf']); ?></td>
-                <td><?php echo date('d/m/Y', strtotime($conta['data_inicial'])); ?></td>
+                <td><?php echo htmlspecialchars($conta['id_cnpj']); ?></td>
+                <td><?php echo htmlspecialchars($conta['id_categoria']); ?></td>
             </tr>
             <?php endforeach; ?>
         <?php else: ?>
         <tr>
-            <td colspan="7">Nenhuma conta encontrada com os critérios informados.</td>
+            <td colspan="8">Nenhuma conta encontrada com os critérios informados.</td>
         </tr>
         <?php endif; ?>
     </tbody>

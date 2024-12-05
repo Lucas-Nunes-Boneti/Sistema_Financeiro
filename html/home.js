@@ -1,13 +1,25 @@
-
+// Função para carregar conteúdo dinâmico com base na página solicitada
 function loadPage(page) {
-    // Verifica se é uma página interna ou externa (Dashboard, Perfil etc. são seções internas)
-    if (page === 'dashboard' || page === 'cliente' || page === 'contasPagar' || page === 'contasReceber' ||
-        page === 'relatorios' || page === 'perfil') {
-        document.getElementById('content').innerHTML = document.getElementById(page).innerHTML;
+    // Verifica se é uma página interna ou externa
+    const internalPages = ['dashboard', 'cliente', 'contasPagar', 'contasReceber', 'relatorios', 'perfil', 'graficoUsers'];
+
+    if (internalPages.includes(page)) {
+        const pageElement = document.getElementById(page);
+        
+        // Verifica se o elemento existe antes de tentar acessar seu innerHTML
+        if (pageElement) {
+            document.getElementById('content').innerHTML = pageElement.innerHTML;
+        } else {
+            console.error('Elemento não encontrado:', page);
+        }
     } else {
-        // Carrega uma página externa como 'Usuario.html' via AJAX
         fetch(page)
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar a página: ${response.status} ${response.statusText}`);
+                }
+                return response.text();
+            })
             .then(html => {
                 document.getElementById('content').innerHTML = html;
             })
@@ -15,10 +27,7 @@ function loadPage(page) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadPage('dashboard');
-});
-
+// Função para carregar o conteúdo externo (sem verificar se é interno)
 function loadPagee(page) {
     fetch(page)
         .then(response => response.text())

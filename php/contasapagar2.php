@@ -13,7 +13,7 @@ $categoria = $_POST ['categoria'];
 $status = $_POST['status'];
 
 
- 
+ echo "$fornecedor $categoria";
 // Verifica se algum dado não foi informado
 if (empty($nome) || empty($categoria) || empty($data) || empty($descricao) || empty($valor) || empty($fornecedor) || empty($categoria) || empty($status)) {
     echo "É necessário informar todos os campos";
@@ -22,7 +22,7 @@ if (empty($nome) || empty($categoria) || empty($data) || empty($descricao) || em
  
 // Prepara a consulta SQL para inserção
 $resultSqlContas = "INSERT INTO tb_contas_a_pagar (nome, data_vencimento, descricao, valor, statuss, id_cnpj, id_categoria)
-                    VALUES ('$nome', '$data', '$descricao', '$valor', '$status', '$fornecedor', '$categoria')";
+                    VALUES ('$nome', '$data', '$descricao', '$valor', '$statuss', '$fornecedor', '$categoria')";
 
 // Executa a consulta
 if (mysqli_query($conexao, $resultSqlContas)) {

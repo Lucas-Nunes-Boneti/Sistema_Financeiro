@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../html/cadastro.css">
 </head>
 <body>
-    <form action="contasapagar2.php" method="post">
+    <form action="../php/contasapagar2.php" method="post">
         <p>Contas a Pagar</p>
         <div class="container">
             <img src="" alt="">
@@ -86,9 +86,9 @@
         </div>
         <div>
            <label for="status">Status
-                <input type="radio" name="status" value="pendente">Pendente
-                <input type="radio" name="status" value="vencido">Vencido
-                <input type="radio" name="status" value="recebido">Recebido
+                <input type="radio" name="status" id="pendente" value="pendente">Pendente
+                <input type="radio" name="status" id="vencido" value="vencido">Vencido
+                <input type="radio" name="status" id="recebido"  value="recebido">Recebido
             </label>
         </div>
 

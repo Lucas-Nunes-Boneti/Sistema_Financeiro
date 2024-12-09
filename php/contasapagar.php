@@ -87,8 +87,8 @@
         <div>
            <label for="status">Status
                 <input type="radio" name="status" id="pendente" value="pendente">Pendente
-                <input type="radio" name="status" id="vencido" value="vencido">Vencido
-                <input type="radio" name="status" id="recebido"  value="recebido">Recebido
+                <input type="radio" name="status" id="vencido" value="vencido">Vencida
+                <input type="radio" name="status" id="recebido"  value="recebido">baixada
             </label>
         </div>
 

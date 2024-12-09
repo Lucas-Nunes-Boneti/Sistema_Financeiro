@@ -83,23 +83,90 @@ $saldo = $totalReceber - $totalPagar;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório Financeiro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h3 {
+            color: #2c3e50;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            padding: 8px;
+            margin-top: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            background-color: #fff;
+        }
+        td, th {
+            text-align: center;
+        }
+        .resumo {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
+
     <h1>Relatório Financeiro</h1>
 
     <!-- Formulário de Filtros -->
     <form method="get">
         <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" value="<?php echo $descricaoFiltro; ?>"><br><br>
+        <input type="text" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricaoFiltro); ?>"><br><br>
 
         <label for="data_vencimento">Data de Vencimento:</label>
-        <input type="date" id="data_vencimento" name="data_vencimento" value="<?php echo $dataVencimentoFiltro; ?>"><br><br>
+        <input type="date" id="data_vencimento" name="data_vencimento" value="<?php echo htmlspecialchars($dataVencimentoFiltro); ?>"><br><br>
 
         <label for="status">Status:</label>
         <select name="status" id="status">
             <option value="">Todos</option>
             <option value="Pendente" <?php echo $statusFiltro == 'Pendente' ? 'selected' : ''; ?>>Pendente</option>
-            <option value="Pago" <?php echo $statusFiltro == 'Pago' ? 'selected' : ''; ?>>Pago</option>
+            <option value="Baixada" <?php echo $statusFiltro == 'Baixada' ? 'selected' : ''; ?>>Baixada</option>
             <option value="Vencida" <?php echo $statusFiltro == 'Vencida' ? 'selected' : ''; ?>>Vencida</option>
         </select><br><br>
 
@@ -107,7 +174,7 @@ $saldo = $totalReceber - $totalPagar;
     </form>
 
     <h3>Contas a Pagar</h3>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -122,18 +189,18 @@ $saldo = $totalReceber - $totalPagar;
             <?php foreach ($contasPagar as $conta): ?>
                 <tr>
                     <td><?php echo $conta['id_contas_a_pagar']; ?></td>
-                    <td><?php echo $conta['nome']; ?></td>
-                    <td><?php echo $conta['descricao']; ?></td>
+                    <td><?php echo htmlspecialchars($conta['nome']); ?></td>
+                    <td><?php echo htmlspecialchars($conta['descricao']); ?></td>
                     <td><?php echo formatarMoeda($conta['valor']); ?></td>
                     <td><?php echo date('d/m/Y', strtotime($conta['data_vencimento'])); ?></td>
-                    <td><?php echo $conta['statuss']; ?></td>
+                    <td><?php echo htmlspecialchars($conta['statuss']); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 
     <h3>Contas a Receber</h3>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -148,19 +215,22 @@ $saldo = $totalReceber - $totalPagar;
             <?php foreach ($contasReceber as $conta): ?>
                 <tr>
                     <td><?php echo $conta['id_contas_a_receber']; ?></td>
-                    <td><?php echo $conta['descricao']; ?></td>
+                    <td><?php echo htmlspecialchars($conta['descricao']); ?></td>
                     <td><?php echo formatarMoeda($conta['valor']); ?></td>
                     <td><?php echo date('d/m/Y', strtotime($conta['data_vencimento'])); ?></td>
-                    <td><?php echo $conta['statuss']; ?></td>
+                    <td><?php echo htmlspecialchars($conta['statuss']); ?></td>
                     <td><?php echo date('d/m/Y', strtotime($conta['data_inicial'])); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 
-    <h3>Resumo Financeiro</h3>
-    <p><strong>Total a Receber:</strong> <?php echo formatarMoeda($totalReceber); ?></p>
-    <p><strong>Total a Pagar:</strong> <?php echo formatarMoeda($totalPagar); ?></p>
-    <p><strong>Lucro:</strong> <?php echo formatarMoeda($saldo); ?></p>
+    <div class="resumo">
+        <h3>Resumo Financeiro</h3>
+        <p><strong>Total a Receber:</strong> <?php echo formatarMoeda($totalReceber); ?></p>
+        <p><strong>Total a Pagar:</strong> <?php echo formatarMoeda($totalPagar); ?></p>
+        <p><strong>Lucro:</strong> <?php echo formatarMoeda($saldo); ?></p>
+    </div>
+
 </body>
 </html>

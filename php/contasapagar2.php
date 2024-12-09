@@ -22,18 +22,21 @@ if (empty($nome) || empty($categoria) || empty($data) || empty($descricao) || em
  
 // Prepara a consulta SQL para inserção
 $resultSqlContas = "INSERT INTO tb_contas_a_pagar (nome, data_vencimento, descricao, valor, statuss, id_cnpj, id_categoria)
-                    VALUES ('$nome', '$data', '$descricao', '$valor', '$statuss', '$fornecedor', '$categoria')";
+                    VALUES ('$nome', '$data', '$descricao', '$valor', '$status', '$fornecedor', '$categoria')";
 
 // Executa a consulta
 if (mysqli_query($conexao, $resultSqlContas)) {
     // Verifica se a inserção foi bem-sucedida e redireciona
-    $_SESSION['msg'] = "<p>Conta cadastrada com sucesso</p>";
-    header("Location: ../php/consulta_a_pagar.php");
-    exit; // Certifique-se de chamar exit após o redirecionamento
+    $_SESSION['msg'] = "<p><script> alert('Conta cadastrada com sucesso');</script></p>";
+    echo "<script> alert('Conta cadastrada com sucesso');</script>";
+    //header("Location: ../php/consulta_a_pagar.php");
+   // exit; // Certifique-se de chamar exit após o redirecionamento
 } else {
     // Caso haja erro na inserção
     $_SESSION['msg'] = "<p>Erro ao cadastrar conta</p>";
-    header("Location: ../php/consulta_a_pagar.php");
-    exit; // Certifique-se de chamar exit após o redirecionamento
+    echo "<script> alert('Conta não cadastrada ');</script>";
+
+    //header("Location: ../php/consulta_a_pagar.php");
+  //  exit; // Certifique-se de chamar exit após o redirecionamento
 }
 ?>

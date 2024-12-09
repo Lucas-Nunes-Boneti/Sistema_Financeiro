@@ -2,16 +2,24 @@
 session_start();
 include("../banco_de_dados/conexao.php");
 
-if (isset($_GET['id_contas_a_receber'])){
-    $id_contas_a_pagar = $_GET['id_contas_a_receber'];
+// Verificar se o parâmetro 'id_contas_a_receber' foi passado via URL (GET)
+if (isset($_GET['id_contas_a_receber'])) {
+    // Atribuindo o valor de 'id_contas_a_receber' à variável
+    $id_contas_a_receber = $_GET['id_contas_a_receber'];
 
-    $sqlExcluir = "delete from tb_contas_a_receber where id_contas_a_receber = '$id_contas_a_receber' ";
+    // Prevenir SQL Injection usando mysqli_real_escape_string
+    $id_contas_a_receber = mysqli_real_escape_string($conexao, $id_contas_a_receber);
 
-    if (mysqli_query($conexao, $sqlExcluir)){
-        echo "Excluido com sucesso";
-    }else{
-        echo "Não excluido";
+    // Criando a query SQL para excluir o registro
+    $sqlExcluir = "DELETE FROM tb_contas_a_receber WHERE id_contas_a_receber = '$id_contas_a_receber'";
+
+    // Executando a query de exclusão
+    if (mysqli_query($conexao, $sqlExcluir)) {
+        echo "Excluído com sucesso.";
+    } else {
+        echo "Erro ao excluir: " . mysqli_error($conexao);
     }
+} else {
+    echo "ID não fornecido para exclusão.";
 }
-
 ?>

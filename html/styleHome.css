@@ -1,159 +1,102 @@
-* {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Header e título */
-header {
-    background-color: #1b8612;
-    padding: 15px 20px;
-    text-align: center;
-}
-
-header p {
-    font-size: 28px;
-    color: #fff;
-    font-weight: bold;
-}
-
-/* Menu */
-.menu {
-    background-color: #333;
-    width: 200px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 20px;
+    background-color: #f4f4f9;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 100vh;
 }
 
-.menu ul {
-    list-style: none;
-    padding: 0;
-}
-
-.menu li {
-    margin-bottom: 20px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    text-align: center;
-    display: block;
-    padding: 10px;
-    width: 150px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.menu a:hover {
-    background-color: #3a7ca5;
-}
-
-/* Main content */
-.main-content {
-    margin-left: 220px;
-    padding: 30px;
-}
-
-#content {
-  
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    min-height: 400px;
-}
-
-/* Footer */
-footer {
+/* Estilo do menu lateral */
+.sidebar {
+    width: 250px;
     background-color: #333;
     color: white;
-    text-align: center;
-    padding: 10px;
+    padding: 20px;
+    height: 100%;
     position: fixed;
-    bottom: 0;
-    width: 100%;
+    transition: width 0.3s;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .menu {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 24px;
+    text-align: center;
 }
 
-.menu {
-    font-family: Arial, sans-serif;
-    background-color: #333;
-    width: 200px; /* Definindo largura para o menu */
-}
-
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu > ul > li {
+/* Estilo do menu suspenso */
+.menu-item {
     position: relative;
-    padding: 10px;
 }
 
-.menu a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
+.sidebar a {
     display: block;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    text-align: center;
 }
 
-/* Submenu oculto inicialmente */
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* Submenu (ficará oculto até o hover) */
 .submenu {
     display: none;
     position: absolute;
+    left: 100%;
     top: 0;
-    left: 100%; /* Coloca o submenu à direita do item */
     background-color: #444;
-    min-width: 200px;
-    border-radius: 4px;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    border-radius: 5px;
 }
 
-.submenu li {
-    padding: 10px;
+.submenu a {
+    padding: 12px;
+    color: white;
+    text-align: left;
 }
 
-.submenu li a {
-    padding: 8px 12px;
+.submenu a:hover {
+    background-color: #575757;
 }
 
-/* Exibe o submenu quando passar o mouse sobre o item principal */
-.menu > ul > li:hover > .submenu {
+/* Mostrar submenu ao passar o mouse */
+.menu-item:hover .submenu {
     display: block;
 }
 
-.menu > ul > li > a:hover {
-    background-color: #555;
+/* Estilo do conteúdo principal (área de exibição do iframe) */
+.main-content {
+    margin-left: 260px; /* Espaço para o menu lateral */
+    padding: 10px;
+    flex: 1;
+    overflow: auto;
 }
 
-/* Estilo de hover para os itens do submenu */
-.submenu li a:hover {
-    background-color: #666;
+iframe {
+    width: 100%;
+    height: 1000px;
+    border: none;
+}
+
+.option-button {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.option-button:hover {
+    background-color: #218838;
 }

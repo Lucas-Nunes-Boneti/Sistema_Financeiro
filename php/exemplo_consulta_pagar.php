@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../banco_de_dados/conexao.php"); // Inclua a conexão com o banco de dados
+include("../banco_de_dados/conexao.php"); 
 
 // Variáveis para armazenar os filtros
 $descricaoFiltro = '';
@@ -67,13 +67,43 @@ $contasExibidas = filtrarContas($descricaoFiltro, $dataVencimentoFiltro, $status
         th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
         th { background-color: #f4f4f4; }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Ao submeter o formulário, impedir o comportamento padrão (recarregar a página)
+        $("form").submit(function(event) {
+            event.preventDefault();
+
+            // Coleta os dados do formulário
+            var descricao = $("#descricao").val();
+            var dataVencimento = $("#data_vencimento").val();
+            var status = $("#status").val();
+
+            // Envia os dados para o PHP via AJAX
+            $.ajax({
+                url: '',  // Refere-se ao próprio arquivo, pois estamos utilizando o mesmo arquivo para PHP e AJAX
+                type: 'GET',
+                data: {
+                    descricao: descricao,
+                    data_vencimento: dataVencimento,
+                    status: status
+                },
+                success: function(response) {
+                    // Atualiza a tabela com os dados retornados
+                    var tabela = $(response).find("#tabelaContas").html();
+                    $("#tabelaContas").html(tabela);
+                }
+            });
+        });
+    });
+    </script>
 </head>
 <body>
 
 <h2>Consulta de Contas a Pagar</h2>
 
 <!-- Formulário de consulta -->
-<form method="GET" action="consultar_contas_a_pagar.php">
+<form method="GET">
     <label for="descricao">Descrição:</label>
     <input type="text" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricaoFiltro); ?>"><br><br>
 
@@ -93,8 +123,7 @@ $contasExibidas = filtrarContas($descricaoFiltro, $dataVencimentoFiltro, $status
 
 <h3>Contas Encontradas</h3>
 
-<!-- Tabela para exibir as contas consultadas -->
-<table>
+<table id="tabelaContas">
     <thead>
         <tr>
             <th>ID</th>

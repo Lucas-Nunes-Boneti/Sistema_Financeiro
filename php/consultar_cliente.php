@@ -1,37 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<?php
+// Inicia a sessão, caso ainda não tenha sido iniciada
+session_start();
+include("../banco_de_dados/conexao.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta De Clientes Por Nome</title>
-    <link rel="stylesheet" href="cadastro.css">
-</head>
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Recebe o nome para busca
+    $nome = $_POST['nome'];
 
-<body>
-    <h1>Consulta de Clientes por Nome</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <label for="nome">Nome dos Clientes:</label>
-        <input type="text" id="nome" name="nome"><br>
-        <button type="submit">Buscar</button>
+    // Verifica se o nome não está vazio
+    if (!empty($nome)) {
+        // Consulta no banco de dados
+        $sqlConsulta = "SELECT * FROM tb_usuario WHERE nome LIKE '%$nome%'";
+        $resultadoConsulta = mysqli_query($conexao, $sqlConsulta);
 
-
-        <?php
-        session_start();
-        include("../banco_de_dados/conexao.php");
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $nome = $_POST['nome'];
-
-            // Verifica se o nome não está vazio
-            if (!empty($nome)) {
-                // Consulta ao banco de dados
-                $sqlConsulta = "SELECT * FROM tb_usuario WHERE nome LIKE '%$nome%'";
-                $resultadoConsulta = mysqli_query($conexao, $sqlConsulta);
-
-                // Verifica se há resultados
-                if (mysqli_num_rows($resultadoConsulta) > 0) {
-                    echo "<table border='1'>
+        // Verifica se há resultados
+        if (mysqli_num_rows($resultadoConsulta) > 0) {
+            echo "<table border='1'>
                 <tr>
                     <th>Foto</th>
                     <th>Nome</th>
@@ -49,25 +33,25 @@
                     <th>Ações</th>
                 </tr>";
 
-                    // Exibe os resultados
-                    while ($row = mysqli_fetch_assoc($resultadoConsulta)) {
-                        $nome = htmlspecialchars($row['nome'], ENT_QUOTES, 'UTF-8');
-                        $data_nascimento = htmlspecialchars($row['data_nascimento'], ENT_QUOTES, 'UTF-8');
-                        $profissao = htmlspecialchars($row['profissao'], ENT_QUOTES, 'UTF-8');
-                        $cpf = htmlspecialchars($row['cpf'], ENT_QUOTES, 'UTF-8');
-                        $email = htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8');
-                        $telefone = htmlspecialchars($row['telefone'], ENT_QUOTES, 'UTF-8');
-                        $cidade = htmlspecialchars($row['cidade'], ENT_QUOTES, 'UTF-8');
-                        $endereco = htmlspecialchars($row['endereco'], ENT_QUOTES, 'UTF-8');
-                        $bairro = htmlspecialchars($row['bairro'], ENT_QUOTES, 'UTF-8');
-                        $cep = htmlspecialchars($row['cep'], ENT_QUOTES, 'UTF-8');
-                        $numero = htmlspecialchars($row['numero'], ENT_QUOTES, 'UTF-8');
-                        $sexo = htmlspecialchars($row['sexo'], ENT_QUOTES, 'UTF-8');
+            // Exibe os resultados
+            while ($row = mysqli_fetch_assoc($resultadoConsulta)) {
+                $nome = htmlspecialchars($row['nome'], ENT_QUOTES, 'UTF-8');
+                $data_nascimento = htmlspecialchars($row['data_nascimento'], ENT_QUOTES, 'UTF-8');
+                $profissao = htmlspecialchars($row['profissao'], ENT_QUOTES, 'UTF-8');
+                $cpf = htmlspecialchars($row['cpf'], ENT_QUOTES, 'UTF-8');
+                $email = htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8');
+                $telefone = htmlspecialchars($row['telefone'], ENT_QUOTES, 'UTF-8');
+                $cidade = htmlspecialchars($row['cidade'], ENT_QUOTES, 'UTF-8');
+                $endereco = htmlspecialchars($row['endereco'], ENT_QUOTES, 'UTF-8');
+                $bairro = htmlspecialchars($row['bairro'], ENT_QUOTES, 'UTF-8');
+                $cep = htmlspecialchars($row['cep'], ENT_QUOTES, 'UTF-8');
+                $numero = htmlspecialchars($row['numero'], ENT_QUOTES, 'UTF-8');
+                $sexo = htmlspecialchars($row['sexo'], ENT_QUOTES, 'UTF-8');
 
-                        // Caminho da foto (caso não tenha, usa imagem padrão)
-                        $foto_cliente = $row['foto_cliente'] ? "fotos/cadastro/" . htmlspecialchars($row['foto_cliente'], ENT_QUOTES, 'UTF-8') : "fotos/padrao.jpg";
+                // Caminho da foto (caso não tenha, usa imagem padrão)
+                $foto_cliente = $row['foto_cliente'] ? "fotos/cadastro/" . htmlspecialchars($row['foto_cliente'], ENT_QUOTES, 'UTF-8') : "fotos/padrao.jpg";
 
-                        echo "<tr>
+                echo "<tr>
                     <td style='text-align: center;'>
                         <img src='$foto_cliente' alt='$nome' style='width: 100px; height: 100px; object-fit: cover; border-radius: 10px;'>
                     </td>
@@ -88,18 +72,14 @@
                         <a href='excluirCliente.php?cpf={$cpf}'>Excluir</a>
                     </td>
                 </tr>";
-                    }
-
-                    echo "</table>";
-                } else {
-                    echo "<p>Nenhum cliente encontrado.</p>";
-                }
-            } else {
-                echo "<p>Por favor, insira um nome para buscar.</p>";
             }
-        }
-        ?>
-    </form>
-</body>
 
-</html>
+            echo "</table>";
+        } else {
+            echo "<p>Nenhum cliente encontrado.</p>";
+        }
+    } else {
+        echo "<p>Por favor, insira um nome para buscar.</p>";
+    }
+}
+?>

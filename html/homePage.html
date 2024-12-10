@@ -1,60 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gestão Financeira</title>
+    <title>Sistema Financeiro</title>
     <link rel="stylesheet" href="styleHome.css">
+ 
+</head>
 <body>
 
-    <header>
-        <p>Sistema de Gestão Financeira</p>  
-    </header>
-
-    <nav class="menu">
-        <ul>
-            <li><a href="#" onclick="loadPagee('../php/graficoUsers.php')">Dashboard</a></li>
-            <li>
-                <a href="#">Cadastros</a>
-                <!-- Submenu -->
-                <ul class="submenu">                    
-                    <li><a href="#" onclick="loadPagee('../html/Usuario.html')">Novo Cliente</a></li>
-                    <li><a href="#" onclick="loadPagee('../html/fornecedor.html')">Fornecedor</a></li>
-                    <li><a href="#" onclick="loadPagee('../php/contas_a_receber.php')">Contas a Receber</a></li>
-                    <li><a href="#" onclick="loadPagee('../php/contasapagar.php')">Contas a Pagar</a></li>
-                    <li><a href="#" onclick="loadPagee('../html/categoria.html')">Categoria</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Consultas</a>
-                <!-- Submenu -->
-                <ul class="submenu">
-                    <li><a href="#" onclick="loadPagee('../php/consultar_cliente.php')">Clientes</a></li>
-                    <li><a href="#" onclick="loadPagee('../php/consultaFornecedor.php')">Fornecedores</a></li>
-                    <li><a href="#" onclick="loadPagee('../php/consulta_receber,php.')">Contas a Receber</a></li>
-                    <li><a href="#" onclick="loadPagee('../php/exemplo_consulta_pagar.php')">Contas a Pagar</a></li>
-                    <li><a href="#" onclick="loadPagee('../php/buscarcategoria.php')">Categoria</a></li>
-                </ul>
-            </li>
-            <li><a href="#" onclick="loadPagee('../php/relatorio.php')">Relatório</a></li>
-            <li><a href="#" onclick="loadPagee('perfil')">Perfil</a></li>
-        </ul>
-    </nav>
-    
-    <main class="main-content">
-        <!-- Conteúdo dinâmico será carregado aqui -->
-        <div id="content">
-            <h2>Bem-vindo ao Sistema de Gestão Financeira!</h2>
-           
+    <!-- Menu Lateral -->
+    <div class="sidebar">
+        <h2>Sistema Financeiro</h2>
+        
+        <!-- Opção com menu suspenso -->
+        <div class="menu-item">
+            <a href="#">Dashboard</a>
+            <ul class="submenu">
+                <li><a href="#" onclick="openPage('../php/graficoUsers.php')">Usúario</a></li>
+                <li><a href="#" onclick="openPage('../php/graficoContasAPagar.php')">Contas a Pagar</a></li>
+            </ul>
         </div>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 Sistema de Gestão Financeira | Todos os direitos reservados</p>
-    </footer>
+        <!-- Opção com menu suspenso -->
+        <div class="menu-item">
+            <a href="#">Cadastros</a>
+            <ul class="submenu">
+                <li><a href="#" onclick="openPage('../php/contasapagar.php')">Contas a Pagar</a></li>
+                <li><a href="#" onclick="openPage('../php/contas-a-receber.php')">Contas a Receber</a></li>
+                <li><a href="#" onclick="openPage('../html/fornecedor.html')">Fornecedores</a></li>
+                <li><a href="#" onclick="openPage('../html/categorias.html')">Categorias</a></li>
+            </ul>
+        </div>
 
-    <script src="home.js"></script>
+        <!-- Opção com menu suspenso -->
+        <div class="menu-item">
+            <a href="#">Consultas</a>
+            <ul class="submenu">
+                <li><a href="#" onclick="openPage('../php/consulta_a_pagar.php')">Contas a Pagar</a></li>
+                <li><a href="#" onclick="openPage('../php/consulta_receber.php')">Contas a Receber</a></li>
+                <li><a href="#" onclick="openPage('../php/fornecedor.php')">Fornecedores</a></li>
+                <li><a href="#" onclick="openPage('../html/categorias.html')">Categorias</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <h2 style="align-items: center"></h2>
+
+        <div>
+            <h3>Visualização de Arquivos:</h3>
+            <iframe id="fileFrame" src="" title=""></iframe>
+        </div>
+    </div>
+
+    <!-- Script para abrir as páginas nos iframes -->
+    <script>
+        function openPage(pageUrl) {
+            console.log("Abrindo página: " + pageUrl);  // Verifique no console se a função está sendo chamada
+            document.getElementById('fileFrame').src = pageUrl;
+        }
+    </script>
 </body>
-
 </html>

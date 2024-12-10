@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <td>{$row['descricao']}</td>
                     <td>{$row['valor']}</td>       
                     <td> 
-                    <a href='editarcontapagar.php?id_contas_a_pagar={$idcontaspagar}'>editar</a>
+                    <a href='../php/editarcontapagar.php?id_contas_a_pagar={$idcontaspagar}'>editar</a>
                     <a href='excluircontapagar.php?id_contas_a_pagar={$idcontaspagar}'>excluir</a>
                     </td>
                   </tr>";

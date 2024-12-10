@@ -32,12 +32,12 @@ $resultSqlContas = "INSERT INTO tb_contas_a_receber (descricao, data_inicial, da
 if (mysqli_query($conexao, $resultSqlContas)) {
     // Verifica se a inserção foi bem-sucedida e redireciona
     $_SESSION['msg'] = "<p>Conta cadastrada com sucesso</p>";
-    header("Location: ../php/mudar.php");
+    header("Location: ../php/consulta_receber.php");
     exit; // Certifique-se de chamar exit após o redirecionamento
 } else {
     // Caso haja erro na inserção
     $_SESSION['msg'] = "<p>Erro ao cadastrar conta</p>";
-    header("Location: ../php/mudar.php");
+    header("Location: ../php/consulta_receber.php");
     exit; // Certifique-se de chamar exit após o redirecionamento
 }
 ?>

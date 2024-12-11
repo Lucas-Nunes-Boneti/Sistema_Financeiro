@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("../banco_de_dados/conexao.php");
 
 if (isset($_GET['id_contas_a_pagar'])) {
@@ -11,34 +11,32 @@ if (isset($_GET['id_contas_a_pagar'])) {
     $contas = mysqli_fetch_assoc($resultadoBusca);
 
     // Preenche as variáveis com os dados existentes
-    $nome = $contas['nome']; // Variável adicional
+    $nome = $contas['nome'];
     $data_vencimento = $contas['data_vencimento'];
     $descricao = $contas['descricao'];
+    $id_contas_a_pagar = $contas['id_contas_a_pagar'];
     $statuss = $contas['statuss'];
-    $valor = $contas['valor'];
-    $id_cnpj = $contas['id_cnpj']; // Variável adicional
-    $id_categoria = $contas['id_categoria']; // Variável adicional
-    $id_contas_a_pagar = $contas['id_contas_a_pagar']; // Garantindo que o id esteja presente
+    $valor = $contas['valor'];   
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Obtém os dados do formulário
-    $nome = $_POST['nome']; // Se você decidir incluir esse campo no formulário
+    $nome = $_POST['nome'];
     $data_vencimento = $_POST['data_vencimento'];
     $descricao = $_POST['descricao'];
+    $id_contas_a_pagar = $_POST['id_contas_a_pagar'];
     $statuss = $_POST['statuss'];
     $valor = $_POST['valor'];
-    $id_contas_a_pagar = $_POST['id_contas_a_pagar'];
-    $id_cnpj = $_POST['id_cnpj']; // Se você decidir incluir esse campo no formulário
-    $id_categoria = $_POST['id_categoria']; // Se você decidir incluir esse campo no formulário
-    
+    $id_cnpj = $_POST['id_cnpj'];
+    $id_categoria = $_POST['id_categoria'];
+
     // Query de atualização
     $sqlUpdate = "UPDATE tb_contas_a_pagar SET 
                     nome = '$nome', 
                     data_vencimento = '$data_vencimento', 
                     descricao = '$descricao', 
                     statuss = '$statuss', 
-                    valor = '$valor',
+                    valor = '$valor', 
                     id_cnpj = '$id_cnpj', 
                     id_categoria = '$id_categoria' 
                   WHERE id_contas_a_pagar = '$id_contas_a_pagar'";
@@ -59,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Conta a Pagar</title>
+    <link rel="stylesheet" href="../html/cadastro.css">
 </head>
 <body>
     <h1>Editar Conta a Pagar</h1>
@@ -84,10 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" id="valor" name="valor" value="<?php echo $valor; ?>" required><br><br>
 
         <label for="id_cnpj">CNPJ:</label>
-        <input type="text" id="id_cnpj" name="id_cnpj" value="<?php echo $id_cnpj; ?>"><br><br>
+        <input type="text" id="id_cnpj" name="id_cnpj" value="<?php echo $contas['id_cnpj']; ?>"><br><br>
 
         <label for="id_categoria">Categoria:</label>
-        <input type="text" id="id_categoria" name="id_categoria" value="<?php echo $id_categoria; ?>"><br><br>
+        <input type="text" id="id_categoria" name="id_categoria" value="<?php echo $contas['id_categoria']; ?>"><br><br>
 
         <input type="hidden" name="id_contas_a_pagar" value="<?php echo $id_contas_a_pagar; ?>">
         <input type="submit" value="Atualizar">

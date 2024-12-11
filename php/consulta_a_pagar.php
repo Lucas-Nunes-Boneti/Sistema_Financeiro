@@ -33,26 +33,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (mysqli_num_rows($resultadoConsulta) > 0) {
         echo "<table border='1'>
                 <tr>
-                    <th>nome</th>
-                    <th>categoria</th>
-                    <th>data</th>
-                    <th>descricao</th>
-                    <th>valor</th>                 
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Data Vencimento</th>
+                    <th>Descricao</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>CNPJ</th>                 
               
                 </tr>";
  
         // Exibe os resultados
         while ($row = mysqli_fetch_assoc($resultadoConsulta)) {
-            $idcontaspagar = $row['id_contas_a_pagar'];
+            $id_contas_a_pagar = $row['id_contas_a_pagar'];
             echo "<tr>
                     <td>{$row['nome']}</td>
                     <td>{$row['id_categoria']}</td>
                     <td>{$row['data_vencimento']}</td>
                     <td>{$row['descricao']}</td>
-                    <td>{$row['valor']}</td>       
+                    <td>{$row['valor']}</td> 
+                    <td>{$row['statuss']}</td>     
+                    <td>{$row['id_cnpj']}</td>          
                     <td> 
-                    <a href='../php/editarcontapagar.php?id_contas_a_pagar={$idcontaspagar}'>editar</a>
-                    <a href='excluircontapagar.php?id_contas_a_pagar={$idcontaspagar}'>excluir</a>
+                    <a href='../php/editarcontapagar.php?id_contas_a_pagar={$id_contas_a_pagar}'>editar</a>
+                    <a href='excluircontapagar.php?id_contas_a_pagar={$id_contas_a_pagar}'>excluir</a>
                     </td>
                   </tr>";
         }

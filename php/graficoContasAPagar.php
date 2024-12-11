@@ -23,18 +23,28 @@ $conexao->close();
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gráfico de Pizza - Status das Contas</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      
+        #graficoPizza {
+            width: 40%; 
+            height: 100px;
+            margin: 0 auto; 
+            display: block; 
+        }
+    </style>
 </head>
+
 <body>
 
     <h2>Distribuição das Contas a Pagar por Status</h2>
-    
- 
-    <canvas id="graficoPizza" width="200px" height="200px"></canvas> 
+
+    <canvas id="graficoPizza"></canvas>
 
     <script>
         var ctx = document.getElementById('graficoPizza').getContext('2d');
@@ -57,11 +67,11 @@ $conexao->close();
                         position: 'top', // Posição da legenda
                     }
                 },
-                // Opções para ajustar a proporção e o tamanho do gráfico
                 aspectRatio: 1, // 1:1 para manter um gráfico circular
             }
         });
     </script>
 
 </body>
+
 </html>

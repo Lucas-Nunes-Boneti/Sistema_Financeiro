@@ -31,6 +31,9 @@ if ($result->num_rows > 0) {
           margin: 0 auto; 
           display: block; 
       }
+      h2{
+        text-align: center;
+      }
   </style>
 </head>
 <body>

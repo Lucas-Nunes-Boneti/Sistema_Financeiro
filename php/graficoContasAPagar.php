@@ -37,6 +37,9 @@ $conexao->close();
             margin: 0 auto; 
             display: block; 
         }
+        h2{
+        text-align: center;
+      }
     </style>
 </head>
 

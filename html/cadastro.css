@@ -1,4 +1,4 @@
-/* Centralizar o título */
+
 .centralizar-titulo {
     text-align: center;
     font-size: 50px;
@@ -6,19 +6,19 @@
     color: #ffffff;
 }
 
-/* Estilos gerais */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex; /* Ativa o modelo de layout flex */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    align-items: center; /* Centraliza o conteúdo verticalmente */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     height: 100vh; /* Ocupa toda a altura da tela */
     background-image: url('../fotos/Designer.png');
-    background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
 
 /* Estilo do formulário */
@@ -28,7 +28,7 @@ form {
     border-radius: 8px;
     box-shadow: 0 10px 20px rgb(15, 156, 2); 
     width: 100%;
-    max-width: 600px; /* Define a largura máxima do formulário */
+    max-width: 600px; 
 }
 
 /* Título */
@@ -40,7 +40,7 @@ form p {
     color: #ffffff;
 }
 
-/* Estilos de cada campo */
+
 div {
     margin-bottom: 20px;
 }
@@ -79,12 +79,10 @@ input[type="text"]:focus {
     outline: none;
 }
 
-/* Placeholder */
 input::placeholder {
     color: #000000; 
 }
 
-/* Botão de envio */
 button {
     background-color: #929020;
     color: #fff;
@@ -101,7 +99,7 @@ button:hover {
     background-color: #818b84;
 }
 
-/* Estilo para mensagens de erro ou sucesso */
+
 .error {
     color: red;
     font-size: 12px;

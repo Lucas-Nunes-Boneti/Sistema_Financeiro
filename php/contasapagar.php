@@ -46,6 +46,7 @@
             <label for="fornecedor">Fornecedor:</label>
             <select id="fornecedor" name="fornecedor">
                 <option value="">Selecione o Fornecedor</option>
+                           <option><p>não especificado<p></option>
                 <?php
                  
                 if ($result->num_rows > 0) {

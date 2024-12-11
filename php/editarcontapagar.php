@@ -1,4 +1,4 @@
-<?php
+<?php 
 include("../banco_de_dados/conexao.php");
 
 if (isset($_GET['id_contas_a_pagar'])) {
@@ -8,52 +8,42 @@ if (isset($_GET['id_contas_a_pagar'])) {
     // Consulta para buscar os dados atuais dessa conta
     $sqlBusca = "SELECT * FROM tb_contas_a_pagar WHERE id_contas_a_pagar = '$id_contas_a_pagar'";
     $resultadoBusca = mysqli_query($conexao, $sqlBusca);
-    
-    if ($resultadoBusca) {
-        $contas = mysqli_fetch_assoc($resultadoBusca);
-    } else {
-        echo "Erro ao buscar os dados: " . mysqli_error($conexao);
-    }
+    $contas = mysqli_fetch_assoc($resultadoBusca);
 
     // Preenche as variáveis com os dados existentes
-    $nome = $contas['nome'];
+    $nome = $contas['nome']; // Variável adicional
     $data_vencimento = $contas['data_vencimento'];
     $descricao = $contas['descricao'];
-    $id_contas_a_pagar = $contas['id_contas_a_pagar'];
     $statuss = $contas['statuss'];
     $valor = $contas['valor'];
-    $id_cnpj = $contas['id_cnpj'];
-    $id_categoria = $contas['id_categoria'];
+    $id_cnpj = $contas['id_cnpj']; // Variável adicional
+    $id_categoria = $contas['id_categoria']; // Variável adicional
+    $id_contas_a_pagar = $contas['id_contas_a_pagar']; // Garantindo que o id esteja presente
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Escape os valores antes de inseri-los na query
-    $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
-    $data_vencimento = mysqli_real_escape_string($conexao, $_POST['data_vencimento']);
-    $descricao = mysqli_real_escape_string($conexao, $_POST['descricao']);
-    $id_contas_a_pagar = mysqli_real_escape_string($conexao, $_POST['id_contas_a_pagar']);
-    $statuss = mysqli_real_escape_string($conexao, $_POST['statuss']);
-    
-    // Converte o valor para o tipo float para evitar problemas com a formatação
-    $valor = floatval(str_replace(",", ".", $_POST['valor']));
-    
-    $id_cnpj = mysqli_real_escape_string($conexao, $_POST['id_cnpj']);
-    $id_categoria = mysqli_real_escape_string($conexao, $_POST['id_categoria']);
+    // Obtém os dados do formulário
+    $nome = $_POST['nome']; // Se você decidir incluir esse campo no formulário
+    $data_vencimento = $_POST['data_vencimento'];
+    $descricao = $_POST['descricao'];
+    $statuss = $_POST['statuss'];
+    $valor = $_POST['valor'];
+    $id_contas_a_pagar = $_POST['id_contas_a_pagar'];
+    $id_cnpj = $_POST['id_cnpj']; // Se você decidir incluir esse campo no formulário
+    $id_categoria = $_POST['id_categoria']; // Se você decidir incluir esse campo no formulário
     
     // Query de atualização
     $sqlUpdate = "UPDATE tb_contas_a_pagar SET 
-                   nome = '$nome', 
-                   data_vencimento = '$data_vencimento', 
-                   descricao = '$descricao', 
-                   statuss = '$statuss', 
-                   valor = '$valor', 
-                   id_cnpj = '$id_cnpj', 
-                   id_categoria = '$id_categoria' 
-                WHERE id_contas_a_pagar = '$id_contas_a_pagar'";
+                    nome = '$nome', 
+                    data_vencimento = '$data_vencimento', 
+                    descricao = '$descricao', 
+                    statuss = '$statuss', 
+                    valor = '$valor',
+                    id_cnpj = '$id_cnpj', 
+                    id_categoria = '$id_categoria' 
+                  WHERE id_contas_a_pagar = '$id_contas_a_pagar'";
 
-    // Exibir a query para depuração
-    echo "<pre>" . $sqlUpdate . "</pre>";  // Exibe a consulta para depuração
-
+    // Executa a query de atualização
     if (mysqli_query($conexao, $sqlUpdate)) {
         echo "Dados atualizados com sucesso!";
     } else {

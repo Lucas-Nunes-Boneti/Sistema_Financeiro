@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../html/consulta_receber.css">
 </head>
 <body>
-    <h1> Consulta Contas a Receber</h1>
+    <h1> Consulta Contas a Pagar</h1>
     <form action="" method="post">
         <label for="nome">nome</label>
         <input type="text" id="nome" name="nome">

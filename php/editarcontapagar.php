@@ -64,15 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../html/cadastro.css">
 </head>
 <body>
-<<<<<<< HEAD
-
-
-    <form action="editarcontaspagar.php?id_contas_a_pagar=<?php echo $id_contas_a_pagar; ?>" method="POST">
-=======
     <h1>Editar Conta a Pagar</h1>
     
     <form action="" method="post">
->>>>>>> 3bf9897f7289269d3ea19301540ef694ac0f9195
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<?php echo $nome; ?>" required><br><br>
 

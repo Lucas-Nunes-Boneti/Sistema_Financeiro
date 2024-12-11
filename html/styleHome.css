@@ -53,7 +53,7 @@ body {
     position: absolute;
     left: 100%;
     top: 0;
-    background-color: #000000;
+    background-color: #0b469e;
     padding-left: 0;
     margin: 0;
     list-style: none;
@@ -62,12 +62,12 @@ body {
 
 .submenu a {
     padding: 12px;
-    color: rgb(238, 238, 238);
+    color: rgb(6, 75, 29);
     text-align: left;
 }
 
 .submenu a:hover {
-    background-color: #050505;
+    background-color: #477e47;
 }
 
 /* Mostrar submenu ao passar o mouse */

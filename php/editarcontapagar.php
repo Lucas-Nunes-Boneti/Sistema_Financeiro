@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../html/cadastro.css">
 </head>
 <body>
-    <h1>Editar Conta a Pagar</h1>
+
 
     <form action="editarcontaspagar.php?id_contas_a_pagar=<?php echo $id_contas_a_pagar; ?>" method="POST">
         <label for="nome">Nome:</label>

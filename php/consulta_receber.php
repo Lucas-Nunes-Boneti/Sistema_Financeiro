@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta Contas a Receber</title>
-    <link rel="stylesheet" href="../html/cadastro.css">
+    <link rel="stylesheet" href="../html/consulta_receber.css">
 </head>
 <body>
     <h1>Consulta Contas a Receber</h1>

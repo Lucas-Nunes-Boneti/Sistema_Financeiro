@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>consulta </title>
-    <link rel="stylesheet" href="../html/cadastro.css">
+    <link rel="stylesheet" href="../html/consulta_receber.css">
 </head>
 <body>
-    <h1> consuta</h1>
+    <h1> Consulta Contas a Receber</h1>
     <form action="" method="post">
         <label for="nome">nome</label>
         <input type="text" id="nome" name="nome">

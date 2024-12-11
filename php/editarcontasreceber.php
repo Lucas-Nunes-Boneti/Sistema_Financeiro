@@ -56,8 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../html/cadastro.css">
 </head>
 <body>
-    <h1>Editar Conta a Receber</h1>
-
+    
     <form action="editarcontasreceber.php?id_contas_a_receber=<?php echo $id_contas_a_receber; ?>" method="POST">
         <label for="cpf">CPF:</label>
         <input type="text" id="cpf" name="cpf" value="<?php echo $cpf; ?>" required><br><br>

@@ -83,70 +83,88 @@ $saldo = $totalReceber - $totalPagar;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório Financeiro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
             color: #333;
+            margin: 0;
+            padding: 0;
         }
         h1, h3 {
             color: #2c3e50;
-        }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
             margin-bottom: 20px;
         }
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
         label {
-            font-weight: bold;
+            font-weight: 500;
+            color: #34495e;
         }
         input, select {
-            padding: 8px;
-            margin-top: 5px;
-            width: 200px;
+            padding: 10px;
+            margin: 8px 0;
+            width: calc(100% - 22px);
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 16px;
+            background-color: #f9f9f9;
         }
         button {
-            padding: 10px 20px;
+            padding: 12px 20px;
             background-color: #3498db;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
+            width: 100%;
         }
         button:hover {
             background-color: #2980b9;
         }
         table {
             width: 100%;
+            margin-top: 30px;
             border-collapse: collapse;
-            margin-top: 20px;
         }
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #e0e0e0;
         }
         th, td {
-            padding: 12px;
+            padding: 15px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #ecf0f1;
+            color: #34495e;
         }
         td {
             background-color: #fff;
         }
-        td, th {
+        .resumo {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
             text-align: center;
         }
-        .resumo {
-            background-color: #ecf0f1;
-            padding: 10px;
-            margin-top: 20px;
-            border-radius: 5px;
+        .resumo p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .resumo p strong {
+            color: #3498db;
         }
     </style>
 </head>
@@ -157,10 +175,10 @@ $saldo = $totalReceber - $totalPagar;
     <!-- Formulário de Filtros -->
     <form method="get">
         <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricaoFiltro); ?>"><br><br>
+        <input type="text" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricaoFiltro); ?>">
 
         <label for="data_vencimento">Data de Vencimento:</label>
-        <input type="date" id="data_vencimento" name="data_vencimento" value="<?php echo htmlspecialchars($dataVencimentoFiltro); ?>"><br><br>
+        <input type="date" id="data_vencimento" name="data_vencimento" value="<?php echo htmlspecialchars($dataVencimentoFiltro); ?>">
 
         <label for="status">Status:</label>
         <select name="status" id="status">
@@ -168,11 +186,12 @@ $saldo = $totalReceber - $totalPagar;
             <option value="Pendente" <?php echo $statusFiltro == 'Pendente' ? 'selected' : ''; ?>>Pendente</option>
             <option value="Baixada" <?php echo $statusFiltro == 'Baixada' ? 'selected' : ''; ?>>Baixada</option>
             <option value="Vencida" <?php echo $statusFiltro == 'Vencida' ? 'selected' : ''; ?>>Vencida</option>
-        </select><br><br>
+        </select>
 
         <button type="submit">Consultar</button>
     </form>
 
+    <!-- Tabelas de Contas -->
     <h3>Contas a Pagar</h3>
     <table>
         <thead>
@@ -225,6 +244,7 @@ $saldo = $totalReceber - $totalPagar;
         </tbody>
     </table>
 
+    <!-- Resumo Financeiro -->
     <div class="resumo">
         <h3>Resumo Financeiro</h3>
         <p><strong>Total a Receber:</strong> <?php echo formatarMoeda($totalReceber); ?></p>

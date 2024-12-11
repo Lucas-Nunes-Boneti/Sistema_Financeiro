@@ -9,11 +9,12 @@
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    margin: 50;
-    padding: 90;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Ativa o modelo de layout flex */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    height: 100vh; /* Ocupa toda a altura da tela */
     background-image: url('../fotos/Designer.png');
     background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
     background-position: center; /* Centraliza a imagem */
@@ -22,24 +23,17 @@ body {
 
 /* Estilo do formulário */
 form {
-    background-color: #092b00;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 10px 10px rgba(156, 11, 11, 0.1);
-     background-color: #092b00;
-    padding: 60px;
     background-color: #283125;
-    padding: 20px;
+    padding: 60px;
     border-radius: 8px;
     box-shadow: 0 10px 20px rgb(15, 156, 2); 
     width: 100%;
-    max-width: 600px;
-      
+    max-width: 600px; /* Define a largura máxima do formulário */
 }
 
 /* Título */
 form p {
-    text-align: center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
+    text-align: center;
     font-size: 40px;
     margin-bottom: 60px;
     font-weight: bold;
@@ -59,9 +53,7 @@ label {
 }
 
 /* Campos de entrada */
- 
-input[type="text"] , input[type="email"], input[type="password"],  input[type="date"], input[type="number"]{
- 
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="number"] {
     width: 100%;
     padding: 10px;
     font-size: 14px;
@@ -70,7 +62,8 @@ input[type="text"] , input[type="email"], input[type="password"],  input[type="d
     box-sizing: border-box;
     background-color: #dfdfdf;
 }
-select option{
+
+select option {
     width: 30%;
     padding: 15px;
     font-size: 14px;
@@ -80,7 +73,6 @@ select option{
     background-color: #dfdfdf;
 }
 
-
 input[type="text"]:focus {
     border-color: #a14114;
     background-color: #ffffff;
@@ -89,36 +81,20 @@ input[type="text"]:focus {
 
 /* Placeholder */
 input::placeholder {
- 
-    color: #223615;
- 
     color: #000000; 
 }
 
 /* Botão de envio */
 button {
- 
-    background-color: #ffffff;
-    color: #030303;
-
-     background-color: #929020;
-     color: #fff;
-     color: #0e0909; 
-
-
     background-color: #929020;
-
     color: #fff;
-
-    color: #0e0909; 
-
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     width: 100%;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;background-color: red;
+    transition: 0.3s;
 }
 
 button:hover {
@@ -133,17 +109,11 @@ button:hover {
 }
 
 .success {
- 
-    color: green; 
-    color: rgb(202, 95, 52); 
+    color: rgb(202, 95, 52);
     font-size: 12px;
     margin-top: 5px;
 }
- 
- 
-  img{
-    max-width: 100px;
-  }
 
- 
-  
+img {
+    max-width: 100px;
+}

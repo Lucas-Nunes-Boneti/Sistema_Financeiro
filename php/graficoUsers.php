@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
     <title>Gráfico de Clientes</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-      #graficoUsers {
+      #graficoSexo {
           width: 40%; 
           height: 100px;
           margin: 0 auto; 
@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
 </head>
 <body>
     <h2>Gráfico de Clientes por Sexo</h2>
-    <canvas id="graficoUsers"></canvas>
+    <canvas id="graficoSexo"></canvas>
     <script>
         var ctx = document.getElementById('graficoSexo').getContext('2d');
         var graficoSexo = new Chart(ctx, {
